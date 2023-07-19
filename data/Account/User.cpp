@@ -10,6 +10,7 @@ User::User(string id, string name, string password) {
     this->password = password;
 }
 
+
 bool User::validate(string idInput, string passwordInput) {
     return this->id == idInput && this->password == passwordInput;
 }

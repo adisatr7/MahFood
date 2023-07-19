@@ -1,7 +1,8 @@
-#include <iostream>
 #include "Item.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::to_string;
 
 
 Item::Item(string id, string name, int price, int quantity, string category) {
@@ -12,7 +13,8 @@ Item::Item(string id, string name, int price, int quantity, string category) {
     this->category = category;
 }
 
-string Item::toString() { 
+
+string Item::toString() const { 
     // Kemalikan string yang berisi informasi item
     return "ID: " + this->id + "\n"
         + "Nama: " + this->name + "\n"
@@ -21,6 +23,7 @@ string Item::toString() {
         + "Kategori: " + this->category + "\n";
 }
 
-void Item::show() {
+
+void Item::show() const {
     cout << this->toString() << endl;
 }

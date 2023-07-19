@@ -1,11 +1,8 @@
-#include <string>
-#include "Item.h"
-
-using namespace std;
-
-
 #ifndef USER_H
 #define USER_H
+
+#include "Item.h"
+
 
 /**
  * Definisi struct Account yang akan digunakan untuk login ke aplikasi.
@@ -14,6 +11,7 @@ struct User {
     string id;          /** ID yang digunakan untuk login. */
     string name;        /** Nama lengkap user. */
     string password;    /** Password yang digunakan untuk login. */
+
 
     /**
      * Konstruktor Account.
@@ -26,6 +24,11 @@ struct User {
 
     /**
      * Validasi apakah id dan password yang dimasukkan sesuai dengan akun ini.
+     * 
+     * @param idInput ID yang dimasukkan user.
+     * @param passwordInput Password yang dimasukkan user.
+     * 
+     * @return `true` jika id dan password sesuai dengan akun ini, `false` jika tidak.
      */
     bool validate(string idInput, string passwordInput);
 };

@@ -1,10 +1,10 @@
-#include <string>
-
-using namespace std;
-
-
 #ifndef ITEM_H
 #define ITEM_H
+
+#include <iostream>
+
+using std::string;
+
 
 /**
  * Definisi struct Item yang merupakan item yang dijual di restoran.
@@ -32,12 +32,12 @@ struct Item {
      * 
      * @return string yang berisi informasi item.
      */
-    string toString();
+    string toString() const;
 
     /**
      * Menampilkan informasi item ke layar.
      */
-    void show();
+    void show() const;
 };
 
 #endif
