@@ -3,7 +3,14 @@
 
 
 /**
- * Deklarasi fungsi untuk pindah ke halaman lain.
+ * Status aplikasi sedang membuka halaman apa
+ */
+enum currentPage {
+    
+};
+
+/**
+ * Pindah ke halaman lain.
  * 
  * @param page Fungsi yang akan dipanggil ketika pindah ke halaman lain.
  * @return `0` jika berhasil, `-1` jika gagal.
