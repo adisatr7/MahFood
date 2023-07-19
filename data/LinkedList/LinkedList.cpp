@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+#include "LinkedList.hpp"
 
 using std::cout;
 using std::endl;
