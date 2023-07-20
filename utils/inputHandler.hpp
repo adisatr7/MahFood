@@ -64,6 +64,19 @@ int inputInteger(string prompt) {
 
 
 /**
+ * Meminta input password dari user.
+ * 
+ * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.
+ * 
+ * @return Password raw dalam bentuk `string`
+ */
+string inputPassword(string prompt) {
+    // TODO: Implement handler input password beneran dgn *****
+    return inputString(prompt);
+}
+
+
+/**
  * Menerima input tombol keyboard dari user.
  * 
  * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.

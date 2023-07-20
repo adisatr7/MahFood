@@ -24,7 +24,7 @@ void WelcomePage() {
 
     switch (input) {
         case 0:
-            // navigate(&registerPage);
+            navigate(&registerPage);
             break;
         case 1:
             navigate(&loginPage);
