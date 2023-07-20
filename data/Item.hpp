@@ -4,6 +4,9 @@
 #include <iostream>
 
 using std::string;
+using std::to_string;
+using std::cout;
+using std::endl;
 
 
 /**
@@ -25,19 +28,33 @@ struct Item {
      * @param quantity Jumlah item yang tersedia di restoran,
      * @param category Kategori item.
      */
-    Item(string id, string name, int price, int quantity, string category);
+    Item(string id, string name, int price, int quantity, string category) {
+        this->id = id;
+        this->name = name;
+        this->price = price;
+        this->quantity = quantity;
+        this->category = category;
+    }
 
     /**
      * Mengembalikan string yang berisi informasi item.
      * 
      * @return string yang berisi informasi item.
      */
-    string toString() const;
+    string toString() const {
+        return "ID: " + this->id + "\n"
+            + "Nama: " + this->name + "\n"
+            + "Harga: " + to_string(this->price) + "\n"
+            + "Jumlah Tersedia: " + to_string(this->quantity) + "\n"
+            + "Kategori: " + this->category + "\n";
+    }
 
     /**
      * Menampilkan informasi item ke layar.
      */
-    void show() const;
+    void show() const {
+        cout << this->toString() << endl;
+    }
 };
 
 #endif

@@ -1,9 +1,34 @@
-#include "auth.hpp"
+#ifndef AUTH_HPP
+#define AUTH_HPP
+
+#include <iostream>
+#include "User.hpp"
+#include "LinkedList.hpp"
 
 using std::cout;
 using std::endl;
+using std::string;
 
 
+/**
+ * Linked List utk menyimpan data user yang sudah terdaftar.
+ */
+LinkedList<User> registeredUsers = LinkedList<User>();
+
+/**
+ * User yang sedang login.
+ */
+User currentUser = User("", "", "");
+
+
+/**
+ * Cek apakah user dengan id dan password tertentu sudah terdaftar.
+ * 
+ * @param id ID User.
+ * @param password Password User.
+ * 
+ * @return `true` jika user sudah terdaftar, `false` jika belum.
+ */
 bool isUserExist(string id, string password) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
@@ -22,12 +47,27 @@ bool isUserExist(string id, string password) {
     return false;
 }
 
-
+/**
+ * Login ke aplikasi.
+ * 
+ * @param id ID User.
+ * @param password Password User.
+ * 
+ * @return `true` jika login berhasil, `false` jika gagal.
+ */
 bool login(string id, string password) {
     return isUserExist(id, password);
 }
 
-
+/**
+ * Mendaftarkan User baru.
+ * 
+ * @param id ID User.
+ * @param name Nama User.
+ * @param password Password User.
+ * 
+ * @return `true` jika berhasil, `false` jika gagal.
+ */
 bool registerUser(string id, string name, string password) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
@@ -47,3 +87,5 @@ bool registerUser(string id, string name, string password) {
 
     return true;
 }
+
+#endif
