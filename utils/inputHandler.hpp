@@ -71,43 +71,43 @@ char keyPress(string prompt) {
 
 
 // TODO: Figure out the best way to refresh the page and the best page routing structure
-int menuSelect(string options[], int length, int choice) {
+// int menuSelect(string options[], int length, int choice) {
 
-    // Tampilkan pilihan menu
-    for (int i=0; i<length; i++) {
-        cout << i + 1 << ". " << options[i] << endl;
-    }
+//     // Tampilkan pilihan menu
+//     for (int i=0; i<length; i++) {
+//         cout << i + 1 << ". " << options[i] << endl;
+//     }
 
-    // Menerima input tombol keyboard dari user
-    int keyPress = getch();
+//     // Menerima input tombol keyboard dari user
+//     int keyPress = getch();
 
-    // Handle input user
-    switch (keyPress) {
+//     // Handle input user
+//     switch (keyPress) {
 
-        // Jika user menekan tombol panah atas, kurangi choice
-        case KEY_UP:
-            choice--;
-            reloadPage();
-            break;
+//         // Jika user menekan tombol panah atas, kurangi choice
+//         case KEY_UP:
+//             choice--;
+//             reloadPage();
+//             break;
         
-        // Jika user menekan tombol panah bawah, tambahkan choice
-        case KEY_DOWN:
-            choice++;
-            reloadPage();
-            break;
+//         // Jika user menekan tombol panah bawah, tambahkan choice
+//         case KEY_DOWN:
+//             choice++;
+//             reloadPage();
+//             break;
         
-        // Jika user menekan tombol enter, return choice
-        case 10:
-            return choice;
-    }
+//         // Jika user menekan tombol enter, return choice
+//         case 10:
+//             return choice;
+//     }
 
-    // Jika input user valid, return input tersebut
-    if (choice >= 1 && choice <= length) {
-        return choice;
-    }
+//     // Jika input user valid, return input tersebut
+//     if (choice >= 1 && choice <= length) {
+//         return choice;
+//     }
 
-    // Jika tidak valid, tampilkan pesan error
-    cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
-}
+//     // Jika tidak valid, tampilkan pesan error
+//     cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+// }
 
 #endif

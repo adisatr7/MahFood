@@ -4,7 +4,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "router.hpp"
-#include "PageComponent.hpp"
+#include "../components/PageComponent.hpp"
 
 using std::cout;
 using std::endl;

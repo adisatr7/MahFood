@@ -53,8 +53,8 @@ struct LinkedList {
      * Konstruktor LinkedList yang digunakan untuk membuat Linked List baru.
      */
     LinkedList() {
-        Node *head = nullptr;       // Pointer menuju Node pertama.
-        Node *tail = nullptr;       // Pointer menuju Node terakhir.
+        Node<T> *head = nullptr;       // Pointer menuju Node pertama.
+        Node<T> *tail = nullptr;       // Pointer menuju Node terakhir.
     }
 
 

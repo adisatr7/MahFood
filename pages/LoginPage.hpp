@@ -3,11 +3,10 @@
 
 #include <iostream>
 #include <ncurses.h>
-#include "LoginPage.hpp"
-#include "auth.hpp"
-#include "config.hpp"
-#include "inputHandler.hpp"
-#include "router.hpp"
+#include "../utils/auth.hpp"
+#include "../config.hpp"
+#include "../utils/inputHandler.hpp"
+#include "../utils/router.hpp"
 
 using std::cout;
 using std::endl;

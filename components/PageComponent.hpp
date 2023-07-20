@@ -16,7 +16,7 @@ struct PageComponent {
 
     /**
      * Konstruktor PageComponent. Digunakan untuk membuat objek PageComponent baru. Pembuatan 
-     * objek dilakukan di `routes.hpp` karena aplikasi sudah diatur sedemikian
+     * objek dilakukan di `main.cpp` karena aplikasi sudah diatur sedemikian
      * rupa agar komponen-komponen aplikasi lebih terstruktur dan mudah dicari.
      * 
      * @param name Nama halaman.

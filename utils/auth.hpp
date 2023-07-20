@@ -2,8 +2,8 @@
 #define AUTH_HPP
 
 #include <iostream>
-#include "User.hpp"
-#include "LinkedList.hpp"
+#include "../data/User.hpp"
+#include "../components/LinkedList.hpp"
 
 using std::cout;
 using std::endl;
