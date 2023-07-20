@@ -1,14 +1,25 @@
+#ifndef INPUTHANDLER_HPP
+#define INPUTHANDLER_HPP
+
+#include <iostream>
 #include <ncurses.h>
-#include "input.hpp"
 #include "router.hpp"
 
-using std::cin;
 using std::cout;
+using std::cin;
 using std::endl;
+using std::getline;     // TODO: Implement this <-
 using std::invalid_argument;
-using std::stoi;
+using std::string;
 
 
+/**
+ * Meminta input string dari user.
+ * 
+ * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.
+ * 
+ * @return string yang dimasukkan user.
+ */
 string inputString(string prompt) {
     string input;
     cout << prompt;
@@ -17,6 +28,14 @@ string inputString(string prompt) {
 }
 
 
+/**
+ * Meminta input bilangan bulat dari user. Jika input yang dimasukkan bukan integer, maka akan
+ * meminta input ulang dari user.
+ * 
+ * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.
+ * 
+ * @return integer yang dimasukkan user.
+ */
 int inputInteger(string prompt) {
     
     // Ulangi terus menerus sampai input yang dimasukkan adalah bilangan bulat
@@ -38,10 +57,18 @@ int inputInteger(string prompt) {
 }
 
 
+/**
+ * Menerima input tombol keyboard dari user.
+ * 
+ * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.
+ * 
+ * @return karakter yang dimasukkan user.
+ */
 char keyPress(string prompt) {
     cout << prompt;
     return getch();
 }
+
 
 // TODO: Figure out the best way to refresh the page and the best page routing structure
 int menuSelect(string options[], int length, int choice) {
@@ -82,3 +109,5 @@ int menuSelect(string options[], int length, int choice) {
     // Jika tidak valid, tampilkan pesan error
     cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
 }
+
+#endif

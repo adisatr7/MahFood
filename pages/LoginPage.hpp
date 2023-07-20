@@ -1,9 +1,12 @@
+#ifndef LOGINPAGE_HPP
+#define LOGINPAGE_HPP
+
 #include <iostream>
 #include <ncurses.h>
 #include "LoginPage.hpp"
 #include "auth.hpp"
 #include "config.hpp"
-#include "input.hpp"
+#include "inputHandler.hpp"
 #include "router.hpp"
 
 using std::cout;
@@ -13,6 +16,9 @@ using std::string;
 
 /**
  * Menghandle login user.
+ * 
+ * @param idInput ID yang diinput user.
+ * @param passwordInput Password yang diinput user.
  */
 void handleLogin(string idInput, string passwordInput) {
 
@@ -49,3 +55,5 @@ void LoginPage() {
     passwordInput = inputString("Masukkan password: ");
     cout << endl;
 }
+
+#endif

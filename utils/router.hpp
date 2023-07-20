@@ -1,11 +1,28 @@
+#ifndef USER_H
+#define USER_H
+
 #include <iostream>
 #include <ncurses.h>
 #include "router.hpp"
+#include "PageComponent.hpp"
 
 using std::cout;
 using std::endl;
 
 
+/**
+ * Pointer menuju objek halaman yang sedang aktif.
+ */
+PageComponent* currentPagePointer;
+
+
+/**
+ * Pindah ke halaman lain.
+ * 
+ * @param pageComponentPointer Pointer menuju komponen halaman yang dituju.
+ * 
+ * @return `0` jika berhasil, `-1` jika gagal.
+ */
 int navigate(PageComponent *pageComponentPointer) {
     try {
         // Bersihkan layar
@@ -34,10 +51,16 @@ int navigate(PageComponent *pageComponentPointer) {
 }
 
 
+/**
+ * Refresh halaman yang sedang aktif.
+ */
 void reloadPage() {
+
     // Bersihkan layar
     clear();
 
     // Tampilkan halaman yang sedang aktif
     currentPagePointer->renderPage();
 }
+
+#endif
