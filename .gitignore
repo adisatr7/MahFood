@@ -7,4 +7,4 @@ main.exe
 main.dmg
 
 # Abaikan tempat sampah
-.trash/**/*
+.trash/
