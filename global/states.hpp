@@ -7,6 +7,8 @@
 #ifndef GLOBAL_STATES_HPP
 #define GLOBAL_STATES_HPP
 
+#include <iostream>
+
 
 namespace global {
     bool keepRunning = true;

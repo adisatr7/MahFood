@@ -16,6 +16,7 @@
 #define CONFIG_HPP
 
 #include <iostream>
+#include "./global/styles.hpp"
 
 using std::string;
 
@@ -28,6 +29,10 @@ using std::string;
 string RESTAURANT_NAME = "MahFood";
 string OWNER_NAME = "Mahfud";
 
+namespace STYLE {
+    const string RESET = "\033[0m";
+    const string HIGHLIGHT = COLOR::GREEN + FONT::BOLD + FONT::UNDERLINE;
+}
 
 //-----------------------------------------------------------------------------
 // # Penutup
