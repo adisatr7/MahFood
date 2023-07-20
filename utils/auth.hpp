@@ -18,6 +18,32 @@ User currentUser = User("", "", "");
 
 
 /**
+ * Cek apakah user dengan id tertentu sudah terdaftar.
+ * 
+ * @param id ID User.
+ * 
+ * @return `true` jika user sudah terdaftar, `false` jika belum.
+ */
+bool isUserIdExist(string id) {
+
+    // Buat pointer baru yang menunjuk ke head dari Linked List.
+    Node<User>* current = registeredUsers.head;
+
+    // Cari user yang sesuai dengan id.
+    while (current != nullptr) {
+        if (current->data.id == id)
+            return true;
+
+        // Jika data yang ditunjuk oleh pointer bukan yang dicari, maju ke data berikutnya.
+        current = current->next;
+    }
+
+    // Jika tidak ditemukan, kembalikan `false`.
+    return false;
+}
+
+
+/**
  * Cek apakah user dengan id dan password tertentu sudah terdaftar.
  * 
  * @param id ID User.
@@ -65,6 +91,8 @@ bool login(string id, string password) {
  * @param password Password User.
  * 
  * @return `true` jika berhasil, `false` jika gagal.
+ * 
+ * ! @bug: New user not registering
  */
 bool registerUser(string id, string name, string password) {
 

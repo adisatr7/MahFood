@@ -17,6 +17,7 @@
 #include "./global/styles.hpp"      // Global styles
 #include "./pages/WelcomePage.hpp"  // Semua halaman aplikasi
 #include "./pages/LoginPage.hpp"    // Semua halaman aplikasi
+#include "./pages/RegisterPage.hpp" // Semua halaman aplikasi
 
 
 //-----------------------------------------------------------------------------
@@ -34,6 +35,8 @@ int main() {
 
     welcomePage = Page(&WelcomePage);
     loginPage = Page(&LoginPage);
+    registerPage = Page(&RegisterPage);
+    // mainMenuPage = Page(&MainMenuPage);
 
     //-------------------------------------------------------------------------
     // Tulis halaman yang ingin ditampilkan saat program pertama kali 
