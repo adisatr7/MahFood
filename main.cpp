@@ -1,8 +1,11 @@
-#include <iostream>
+#include "./components/PageComponent.hpp"
+#include "./pages/LoginPage.hpp"
 
-using namespace std;
 
+PageComponent loginPage = PageComponent("Login", LoginPage);
 
 int main() {
+    loginPage.renderPage();
 
+    return 0;
 }
