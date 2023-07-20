@@ -1,17 +1,10 @@
 #ifndef LOGINPAGE_HPP
 #define LOGINPAGE_HPP
 
-#include <iostream>
-#include "routes.hpp"
-#include "../config.hpp"
 #include "../utils/auth.hpp"
 #include "../utils/inputHandler.hpp"
 #include "../utils/router.hpp"
-#include "../utils/terminalHelper.hpp"
 
-using std::cout;
-using std::endl;
-using std::string;
 
 /**
  * Menghandle login user.
@@ -26,8 +19,8 @@ void handleLogin(string idInput, string passwordInput) {
         cout << "Login berhasil!" << endl;
         cout << "Tekan sembarang tombol untuk melanjutkan... " << endl;
         getch();
-        // TODO: Redirect to main menu
-    } 
+        navigate(&mainMenuPage);
+    }
     
     // Jika login gagal, tampilkan pesan gagal dan reload halaman login
     else {
@@ -46,9 +39,9 @@ void LoginPage() {
     // Variable utk menyimpan input user
     string idInput, passwordInput;
 
-    cout << "==============================================" << endl;
-    cout << "   Selamat datang di " << RESTAURANT_NAME << endl;
-    cout << "==============================================" << endl;
+    cout << "=========================================" << endl;
+    cout << "   Silakan masuk menggunakan akun Anda   " << endl;
+    cout << "=========================================" << endl;
     cout << endl;
     idInput = inputString("Masukkan ID: ");
     passwordInput = inputString("Masukkan password: ");

@@ -1,13 +1,8 @@
 #ifndef AUTH_HPP
 #define AUTH_HPP
 
-#include <iostream>
 #include "../data/User.hpp"
 #include "../components/LinkedList.hpp"
-
-using std::cout;
-using std::endl;
-using std::string;
 
 
 /**

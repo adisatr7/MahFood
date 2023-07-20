@@ -1,16 +1,11 @@
 #ifndef INPUTHANDLER_HPP
 #define INPUTHANDLER_HPP
 
-#include <iostream>
 #include "router.hpp"
-#include "../utils/terminalHelper.hpp"
 
-using std::cout;
 using std::cin;
-using std::endl;
 using std::getline;
 using std::invalid_argument;
-using std::string;
 
 
 /**

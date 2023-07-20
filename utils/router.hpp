@@ -1,13 +1,8 @@
 #ifndef USER_H
 #define USER_H
 
-#include <iostream>
-#include "router.hpp"
-#include "../components/Page.hpp"
+#include "../pages/routes.hpp"
 #include "../utils/terminalHelper.hpp"
-
-using std::cout;
-using std::endl;
 
 
 /**

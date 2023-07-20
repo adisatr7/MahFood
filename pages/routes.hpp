@@ -7,9 +7,12 @@
 // Import kode-kode dari file lain yang diperlukan.
 //-----------------------------------------------------------------------------
 
+#include <iostream>                     // Input-output stream
 #include "../components/Page.hpp"       // Komponen halaman aplikasi
-#include "../utils/router.hpp"          // Sistem routing utk navigasi halaman
 
+using std::cout;
+using std::endl;
+using std::string;
 
 //-----------------------------------------------------------------------------
 // # Deklarasi komponen halaman
@@ -20,6 +23,8 @@
 
 Page welcomePage;
 Page loginPage;
+Page registerPage;
+Page mainMenuPage;
 
 //-----------------------------------------------------------------------------
 
