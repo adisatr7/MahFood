@@ -50,9 +50,9 @@ int getch() {
  * 
  * @return Karakter yang dimasukkan user dalam tipe data `int`.
  */
-// int getKeyPress() {
-//     return getch();
-// }
+int getKeyPress() {
+    return getch();
+}
 
 
 /**

@@ -12,7 +12,6 @@ struct User {
     string name;        /** Nama lengkap user. */
     string password;    /** Password yang digunakan untuk login. */
 
-
     /**
      * Konstruktor Account.
      * 

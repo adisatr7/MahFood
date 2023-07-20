@@ -7,6 +7,7 @@
 #ifndef GLOBAL_STATES_HPP
 #define GLOBAL_STATES_HPP
 
+
 namespace global {
     bool keepRunning = true;
 }

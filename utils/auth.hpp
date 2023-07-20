@@ -15,6 +15,7 @@ using std::string;
  */
 LinkedList<User> registeredUsers = LinkedList<User>();
 
+
 /**
  * User yang sedang login.
  */
@@ -47,6 +48,7 @@ bool isUserExist(string id, string password) {
     return false;
 }
 
+
 /**
  * Login ke aplikasi.
  * 
@@ -58,6 +60,7 @@ bool isUserExist(string id, string password) {
 bool login(string id, string password) {
     return isUserExist(id, password);
 }
+
 
 /**
  * Mendaftarkan User baru.

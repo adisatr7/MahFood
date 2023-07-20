@@ -21,6 +21,7 @@ struct Node {
      */
     Node* next;     
 
+
     /**
      * Konstruktor Node. Digunakan untuk membuat Node baru.
      */
@@ -48,7 +49,6 @@ struct LinkedList {
      */
     Node<T>* tail;
 
-
     /**
      * Konstruktor LinkedList yang digunakan untuk membuat Linked List baru.
      */
@@ -56,8 +56,6 @@ struct LinkedList {
         Node<T> *head = nullptr;       // Pointer menuju Node pertama.
         Node<T> *tail = nullptr;       // Pointer menuju Node terakhir.
     }
-
-
 
     /**
      * Menambahkan elemen baru ke dalam Linked List. Nilai elemen baru akan
@@ -165,7 +163,6 @@ struct LinkedList {
         delete temp;
     }
 
-
     /**
      * Menghapus elemen terakhir yang memiliki nilai tertentu.
      * 
@@ -206,7 +203,6 @@ struct LinkedList {
         current->next = current->next->next;
         delete temp;
     }
-
 
     /**
      * Menghapus elemen pada posisi tertentu.
