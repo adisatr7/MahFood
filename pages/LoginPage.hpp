@@ -2,11 +2,11 @@
 #define LOGINPAGE_HPP
 
 #include <iostream>
-#include <ncurses.h>
 #include "../utils/auth.hpp"
 #include "../config.hpp"
 #include "../utils/inputHandler.hpp"
 #include "../utils/router.hpp"
+#include "../utils/terminalHelper.hpp"
 
 using std::cout;
 using std::endl;
@@ -53,6 +53,8 @@ void LoginPage() {
     idInput = inputString("Masukkan ID: ");
     passwordInput = inputString("Masukkan password: ");
     cout << endl;
+
+    handleLogin(idInput, passwordInput);
 }
 
 #endif

@@ -2,9 +2,9 @@
 #define USER_H
 
 #include <iostream>
-#include <ncurses.h>
 #include "router.hpp"
 #include "../components/PageComponent.hpp"
+#include "../utils/terminalHelper.hpp"
 
 using std::cout;
 using std::endl;
@@ -26,7 +26,7 @@ PageComponent* currentPagePointer;
 int navigate(PageComponent *pageComponentPointer) {
     try {
         // Bersihkan layar
-        clear();
+        clearScreen();
 
         // Ubah pointer manjadi objek PageComponent
         PageComponent pageComponent = *pageComponentPointer;
@@ -57,7 +57,7 @@ int navigate(PageComponent *pageComponentPointer) {
 void reloadPage() {
 
     // Bersihkan layar
-    clear();
+    clearScreen();
 
     // Tampilkan halaman yang sedang aktif
     currentPagePointer->renderPage();

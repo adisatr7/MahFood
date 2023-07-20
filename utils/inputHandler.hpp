@@ -2,8 +2,8 @@
 #define INPUTHANDLER_HPP
 
 #include <iostream>
-#include <ncurses.h>
 #include "router.hpp"
+#include "../utils/terminalHelper.hpp"
 
 using std::cout;
 using std::cin;
