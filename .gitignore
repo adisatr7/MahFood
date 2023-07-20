@@ -1,2 +1,7 @@
 # Abaikan folder bawaan VSCode
 .vscode/
+
+# Abaikan file hasil compile/build
+main
+main.exe
+main.dmg
