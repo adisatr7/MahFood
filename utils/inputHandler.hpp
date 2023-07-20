@@ -8,7 +8,7 @@
 using std::cout;
 using std::cin;
 using std::endl;
-using std::getline;     // TODO: Implement this <-
+using std::getline;
 using std::invalid_argument;
 using std::string;
 
@@ -84,46 +84,43 @@ char keyPress(string prompt) {
 /**
  * Handles menu selection with arrow keys and enter key
  * 
+ * @param choice Selected option
  * @param options Array of options
  * @param length Length of options array
- * @param choice Selected option
- * 
- * @return Selected option
  */
-int menuSelect(string options[], int length) {
+void menuSelect(int* choice, string options[], int length) {
 
-    int choice = 0;     // Variable utk  menyimpan pilihan user
-    MenuKey key;        // Variable utk menentukan kapan loop berhenti
+    // Variable utk menentukan kapan loop berhenti
+    MenuKey key;
 
-    // Ulangi hingga user menekan tombol Enter
-    while (key != ENTER) {
+    // Cetak semua opsi
+    for (int i = 0; i < length; i++) {
 
-        // Cetak semua opsi
-        for (int i = 0; i < length; i++) {
-
-            // Style utk opsi yang dipilih
-            if (i == choice) {
-                cout << STYLE::HIGHLIGHT << options[i] << STYLE::RESET << endl;
-            } 
-            
-            // Style utk opsi-opsi lain
-            else {
-                cout << options[i] << endl;
-            }
+        // Style utk opsi yang dipilih
+        if (i == *choice) {
+            cout << STYLE::HIGHLIGHT << options[i] << STYLE::RESET << endl;
+        } 
+        
+        // Style utk opsi-opsi lain
+        else {
+            cout << options[i] << endl;
         }
-
-        // Menerima input tombol keyboard dari user
-        key = getMenuKeyPress();
-
-        // Handle inputan user
-        if (key == UP && choice > 0) {
-            choice--;
-        } else if (key == DOWN && choice < length - 1) {
-            choice++;
-        }
-        reloadPage();
     }
-    return choice;
+
+    // Menerima input tombol keyboard dari user
+    key = getMenuKeyPress();
+
+    // Handle inputan user
+    if (key == UP && *choice > 0) {
+        (*choice)--;
+    } else if (key == DOWN && *choice < length - 1) {
+        (*choice)++;
+    } else if (key == ENTER) {
+        return;
+    }
+
+    // Muat ulang halaman  agar menu menampilkan opsi yg sekarang dipilih
+    reloadPage();
 }
 
 #endif
