@@ -13,8 +13,9 @@
 // Import kode-kode dari file lain yang diperlukan.
 //----------------------------------------------------------------------------
 
-#include "./components/PageComponent.hpp"
-#include "./pages/LoginPage.hpp"
+#include "./global/states.hpp"              // Global variables
+#include "./components/PageComponent.hpp"   // Komponen halaman aplikasi
+#include "./pages/LoginPage.hpp"            // Halaman login
 
 
 //----------------------------------------------------------------------------
@@ -28,13 +29,28 @@ PageComponent loginPage = PageComponent("Login", LoginPage);
 
 
 //----------------------------------------------------------------------------
-// int main() berisi halaman yang pertama kali ditampilkan kepada user
-// ketika program dijalankan. Ubah seesuka hati, tetapi jangan sentuh
-// bagian `renderPage()`-nya!
+// int main() berisi kode yang akan pertama kali dijalankan saat program
+// dijalankan.
 //----------------------------------------------------------------------------
 
 int main() {
-    loginPage.renderPage();
+    do {
+
+        //---------------------------------------------------------------------
+        // Tulis halaman yang ingin ditampilkan saat program pertama kali 
+        // dijalankan disini.
+        //---------------------------------------------------------------------
+
+        loginPage.renderPage();
+
+    //-------------------------------------------------------------------------
+    // Selama `global::keepRunning` bernilai `true`, maka program akan terus
+    // berjalan. Jika bernilai `false`, maka program akan berhenti/keluar.
+    //-------------------------------------------------------------------------
+
+    } while (global::keepRunning);
+
+    //-------------------------------------------------------------------------
 
     return 0;
 }
