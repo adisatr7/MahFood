@@ -5,6 +5,8 @@
 #include <termios.h>
 #include <unistd.h>
 
+using std::cout;
+
 
 /**
  * Matikan mode kanonik dan echo pada terminal.
@@ -55,7 +57,7 @@ void __enableCanonicalMode() {
 /**
  * Menghandle input tombol keyboard dari user.
  * 
- * @return Karakter yang dimasukkan user dalam tipe data `char`.
+ * @return Karakter yang dimasukkan user dalam tipe data `int`.
  */
 int getch() {
 
@@ -70,7 +72,6 @@ int getch() {
     
     // Kembalikan pengaturan terminal ke semula
     __enableCanonicalMode();
-    // tcsetattr(STDIN_FILENO, TCSANOW, &oldSettings);
     
     // Kembalikan karakter yang dibaca
     return ch;
@@ -78,12 +79,52 @@ int getch() {
 
 
 /**
+ * Tipe data enum yang berisi tombol-tombol yang dapat ditekan user
+ * untuk berinteraksi dengan menu aplikasi. Menggunakan enum karena
+ * switch case tidak dapat digunakan dengan tipe data string.
+ */
+enum MenuKey {
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+    ENTER,
+    INVALID
+};
+
+/**
  * Menghandle input tombol keyboard dari user.
  * 
- * @return Karakter yang dimasukkan user dalam tipe data `int`.
+ * @return Tombol yang dimasukkan user dalam tipe data `MenuKey`.
  */
-int getKeyPress() {
-    return getch();
+MenuKey getMenuKeyPress() {
+    // Variable untuk menyimpan karakter yang dimasukkan user
+    int ch;
+
+    // Baca karakter dari input tanpa menunggu Enter
+    ch = getch();
+
+    // Kembalikan karakter yang dibaca
+    if (ch == 27) {
+        getch(); 
+        ch = getch();
+        switch (ch) {
+            case 65: // Up arrow
+                return MenuKey::UP;
+            case 66: // Down arrow
+                return MenuKey::DOWN;
+            case 67: // Right arrow
+                return MenuKey::RIGHT;
+            case 68: // Left arrow
+                return MenuKey::LEFT;
+            default: // Invalid arrow key
+                return MenuKey::INVALID;
+        }
+    } else if (ch == 10) {
+        return MenuKey::ENTER; // Enter key
+    } else {
+        return MenuKey::INVALID; // Any other key is considered invalid
+    }
 }
 
 
@@ -91,7 +132,17 @@ int getKeyPress() {
  * Membersihkan layar terminal menggunakan ANSI escape code.
  */
 void clearScreen() {
-    std::cout << "\033[2J\033[1;1H";
+    cout << "\033[2J\033[1;1H";
+}
+
+
+/**
+ * Membersihkan baris terminal menggunakan ANSI escape code.
+ */
+void clearLine(int line = 1) {
+    for (int i = 0; i < line * 2; i++) {
+        cout << "\u001b[2K";
+    }
 }
 
 #endif

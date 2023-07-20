@@ -21,9 +21,20 @@ using std::string;
  * @return string yang dimasukkan user.
  */
 string inputString(string prompt) {
+
+    // Variable untuk menyimpan input user
     string input;
+
+    // Tampilkan pesan yang meminta user memasukan sesuatu
     cout << prompt;
-    cin >> input;
+
+    // Reset buffer cin utk mencegah bug inputan sebelumnya ikut terbaca
+    cin.ignore();
+
+    // Minta input user
+    getline(cin, input);
+
+    // Kembalikan inputan user sebagai tipe data string
     return input;
 }
 
@@ -70,44 +81,49 @@ char keyPress(string prompt) {
 }
 
 
-// TODO: Figure out the best way to refresh the page and the best page routing structure
-// int menuSelect(string options[], int length, int choice) {
+/**
+ * Handles menu selection with arrow keys and enter key
+ * 
+ * @param options Array of options
+ * @param length Length of options array
+ * @param choice Selected option
+ * 
+ * @return Selected option
+ */
+int menuSelect(string options[], int length) {
 
-//     // Tampilkan pilihan menu
-//     for (int i=0; i<length; i++) {
-//         cout << i + 1 << ". " << options[i] << endl;
-//     }
+    int choice = 0;     // Variable utk  menyimpan pilihan user
+    MenuKey key;        // Variable utk menentukan kapan loop berhenti
 
-//     // Menerima input tombol keyboard dari user
-//     int keyPress = getch();
+    // Ulangi hingga user menekan tombol Enter
+    while (key != ENTER) {
 
-//     // Handle input user
-//     switch (keyPress) {
+        // Cetak semua opsi
+        for (int i = 0; i < length; i++) {
 
-//         // Jika user menekan tombol panah atas, kurangi choice
-//         case KEY_UP:
-//             choice--;
-//             reloadPage();
-//             break;
-        
-//         // Jika user menekan tombol panah bawah, tambahkan choice
-//         case KEY_DOWN:
-//             choice++;
-//             reloadPage();
-//             break;
-        
-//         // Jika user menekan tombol enter, return choice
-//         case 10:
-//             return choice;
-//     }
+            // Style utk opsi yang dipilih
+            if (i == choice) {
+                cout << STYLE::HIGHLIGHT << options[i] << STYLE::RESET << endl;
+            } 
+            
+            // Style utk opsi-opsi lain
+            else {
+                cout << options[i] << endl;
+            }
+        }
 
-//     // Jika input user valid, return input tersebut
-//     if (choice >= 1 && choice <= length) {
-//         return choice;
-//     }
+        // Menerima input tombol keyboard dari user
+        key = getMenuKeyPress();
 
-//     // Jika tidak valid, tampilkan pesan error
-//     cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
-// }
+        // Handle inputan user
+        if (key == UP && choice > 0) {
+            choice--;
+        } else if (key == DOWN && choice < length - 1) {
+            choice++;
+        }
+        reloadPage();
+    }
+    return choice;
+}
 
 #endif
