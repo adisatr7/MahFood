@@ -5,7 +5,7 @@
 
 
 /**
- * Definisi struct Account yang akan digunakan untuk login ke aplikasi.
+ * Akun yang akan digunakan untuk login ke aplikasi.
  */ 
 struct User {
     string id;          /** ID yang digunakan untuk login. */
