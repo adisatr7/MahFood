@@ -57,4 +57,7 @@ void LoginPage() {
     handleLogin(idInput, passwordInput);
 }
 
+
+Page loginPage = Page(&LoginPage);
+
 #endif

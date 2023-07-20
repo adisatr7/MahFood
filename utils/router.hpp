@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "router.hpp"
-#include "../components/PageComponent.hpp"
+#include "../components/Page.hpp"
 #include "../utils/terminalHelper.hpp"
 
 using std::cout;
@@ -13,29 +13,26 @@ using std::endl;
 /**
  * Pointer menuju objek halaman yang sedang aktif.
  */
-PageComponent* currentPagePointer;
+Page* currentPagePointer;
 
 
 /**
  * Pindah ke halaman lain.
  * 
- * @param pageComponentPointer Pointer menuju komponen halaman yang dituju.
+ * @param pagePointer Pointer menuju komponen halaman yang dituju.
  * 
  * @return `0` jika berhasil, `-1` jika gagal.
  */
-int navigate(PageComponent *pageComponentPointer) {
+int navigate(Page *pagePointer) {
     try {
         // Bersihkan layar
         clearScreen();
 
-        // Ubah pointer manjadi objek PageComponent
-        PageComponent pageComponent = *pageComponentPointer;
-
         // Tampilkan halaman yang dituju
-        pageComponent.renderPage();
+        (*pagePointer).loadPage();
 
         // Ubah pointer halaman aktif menjadi pointer halaman dituju
-        currentPagePointer = pageComponentPointer;
+        currentPagePointer = pagePointer;
 
         // Kembalikan 0 sebagai penanda operasi berhasil
         return 0;
@@ -55,12 +52,7 @@ int navigate(PageComponent *pageComponentPointer) {
  * Refresh halaman yang sedang aktif.
  */
 void reloadPage() {
-
-    // Bersihkan layar
-    clearScreen();
-
-    // Tampilkan halaman yang sedang aktif
-    currentPagePointer->renderPage();
+    currentPagePointer->loadPage();
 }
 
 #endif
