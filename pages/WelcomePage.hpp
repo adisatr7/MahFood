@@ -2,7 +2,7 @@
 #define WELCOMEPAGE_HPP
 
 #include <iostream>
-#include "LoginPage.hpp"
+#include "routes.hpp"
 #include "../config.hpp"
 #include "../utils/router.hpp"
 #include "../utils/inputHandler.hpp"
@@ -41,8 +41,5 @@ void WelcomePage() {
             break;
     }
 }
-
-
-Page welcomePage = Page(&WelcomePage);
 
 #endif

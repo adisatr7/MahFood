@@ -28,6 +28,11 @@ struct Page {
     }
 
     /**
+     * Konstruktor kosong untuk membuat objek Page placeholder atau forward declaration.
+     */
+    Page() {}
+
+    /**
      * Menampilkan halaman ke layar.
      */
     void loadPage() {
