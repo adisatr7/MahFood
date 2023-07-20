@@ -18,4 +18,9 @@ PageComponent* currentPagePointer;
  */
 int navigate(PageComponent *pageComponentPointer);
 
+/**
+ * Refresh halaman yang sedang aktif.
+ */
+void reloadPage();
+
 #endif

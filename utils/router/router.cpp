@@ -32,3 +32,12 @@ int navigate(PageComponent *pageComponentPointer) {
         return -1;
     }
 }
+
+
+void reloadPage() {
+    // Bersihkan layar
+    clear();
+
+    // Tampilkan halaman yang sedang aktif
+    currentPagePointer->renderPage();
+}
