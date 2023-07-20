@@ -6,7 +6,7 @@
 #include "LoginPage.hpp"
 #include "auth.hpp"
 #include "config.hpp"
-#include "input.hpp"
+#include "inputHandler.hpp"
 #include "router.hpp"
 
 using std::cout;
