@@ -14,6 +14,7 @@
 //----------------------------------------------------------------------------
 
 #include "./global/states.hpp"              // Global variables
+#include "./utils/router.hpp"               // Untuk navigasi antar halaman
 #include "./components/PageComponent.hpp"   // Komponen halaman aplikasi
 #include "./pages/LoginPage.hpp"            // Halaman login
 
@@ -32,7 +33,7 @@
 // disini.
 //----------------------------------------------------------------------------
 
-PageComponent loginPage = PageComponent("Login", LoginPage);
+PageComponent loginPage = PageComponent("Login", &LoginPage);
 
 
 //----------------------------------------------------------------------------
@@ -48,7 +49,7 @@ int main() {
         // dijalankan disini.
         //---------------------------------------------------------------------
 
-        loginPage.renderPage();
+        navigate(&loginPage);
 
     //-------------------------------------------------------------------------
     // Selama `global::keepRunning` bernilai `true`, maka program akan terus

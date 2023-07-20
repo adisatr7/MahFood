@@ -34,7 +34,7 @@ void handleLogin(string idInput, string passwordInput) {
         cout << "Login gagal. ID atau password salah." << endl;
         cout << "Tekan sembarang tombol untuk mencoba lagi... " << endl;
         getch();
-        reloadPage();
+        // reloadPage();
     }
 }
 

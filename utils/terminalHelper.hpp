@@ -11,10 +11,10 @@
  * 
  * @return Karakter yang dimasukkan user dalam tipe data `char`.
  */
-char getch() {
+int getch() {
 
     // Variable untuk menyimpan karakter yang dimasukkan user
-    char ch;
+    int ch;
 
     // Buat struct untuk menyimpan pengaturan terminal lama dan baru
     struct termios oldSettings, newSettings;
@@ -30,6 +30,9 @@ char getch() {
     
     // Atur pengaturan terminal baru
     tcsetattr(STDIN_FILENO, TCSANOW, &newSettings);
+
+    // Reset buffer agar tombol-tombol yang ditekan sebelumnya tidak ikut terbaca
+    while (getchar() != '\n');
 
     // Baca karakter dari input tanpa menunggu Enter
     ch = getchar();
@@ -47,9 +50,9 @@ char getch() {
  * 
  * @return Karakter yang dimasukkan user dalam tipe data `int`.
  */
-int getKeyPress() {
-    return getch();
-}
+// int getKeyPress() {
+//     return getch();
+// }
 
 
 /**

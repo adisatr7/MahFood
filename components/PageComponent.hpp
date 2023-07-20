@@ -12,7 +12,7 @@ using std::string;
  */
 struct PageComponent {
     string name;                // Nama halaman
-    void (*pageElement)();      // Pointer menuju fungsi utk menampilkan halaman
+    void (*pageElementPointer)();      // Pointer menuju fungsi utk menampilkan halaman
 
     /**
      * Konstruktor PageComponent. Digunakan untuk membuat objek PageComponent baru. Pembuatan 
@@ -20,18 +20,18 @@ struct PageComponent {
      * rupa agar komponen-komponen aplikasi lebih terstruktur dan mudah dicari.
      * 
      * @param name Nama halaman.
-     * @param pageElement Fungsi utk menampilkan halaman.
+     * @param pageElementPointer Fungsi utk menampilkan halaman.
      */
-    PageComponent(string name, void (*pageElement)()) {
+    PageComponent(string name, void (*pageElementPointer)()) {
         this->name = name;
-        this->pageElement = pageElement;
+        this->pageElementPointer = pageElementPointer;
     }
 
     /**
      * Menampilkan halaman.
      */
     void renderPage() {
-        this->pageElement();
+        this->pageElementPointer();
     }
 };
 
