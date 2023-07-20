@@ -25,4 +25,15 @@ string inputString(string prompt);
  */
 int inputInteger(string prompt);
 
+/**
+ * Menerima input tombol keyboard dari user.
+ * 
+ * @param prompt Pesan yang akan ditampilkan sebelum meminta input dari user.
+ * 
+ * @return karakter yang dimasukkan user.
+ */
+char keyPress(string prompt);
+
+int menuSelect(string options[], int length, int choice);
+
 #endif
