@@ -2,8 +2,9 @@
 #define LOGINPAGE_HPP
 
 #include <iostream>
-#include "../utils/auth.hpp"
+#include "routes.hpp"
 #include "../config.hpp"
+#include "../utils/auth.hpp"
 #include "../utils/inputHandler.hpp"
 #include "../utils/router.hpp"
 #include "../utils/terminalHelper.hpp"
@@ -11,7 +12,6 @@
 using std::cout;
 using std::endl;
 using std::string;
-
 
 /**
  * Menghandle login user.
@@ -32,9 +32,9 @@ void handleLogin(string idInput, string passwordInput) {
     // Jika login gagal, tampilkan pesan gagal dan reload halaman login
     else {
         cout << "Login gagal. ID atau password salah." << endl;
-        cout << "Tekan sembarang tombol untuk mencoba lagi... " << endl;
+        cout << "Tekan sembarang tombol untuk kembali ke menu awal... " << endl;
         getch();
-        // reloadPage();
+        navigate(&welcomePage);
     }
 }
 
@@ -56,8 +56,5 @@ void LoginPage() {
 
     handleLogin(idInput, passwordInput);
 }
-
-
-Page loginPage = Page(&LoginPage);
 
 #endif

@@ -15,7 +15,8 @@
 
 #include "./global/states.hpp"      // Global variables
 #include "./global/styles.hpp"      // Global styles
-#include "./pages/routes.hpp"       // Sistem routing utk navigasi halaman
+#include "./pages/WelcomePage.hpp"  // Semua halaman aplikasi
+#include "./pages/LoginPage.hpp"    // Semua halaman aplikasi
 
 
 //-----------------------------------------------------------------------------
@@ -24,6 +25,15 @@
 //-----------------------------------------------------------------------------
 
 int main() {
+
+    //-------------------------------------------------------------------------
+    // Komponen halaman yang sudah dideklarasikan di `routes.hpp` dan 
+    // diimplementasikan di file .hpp-nya sendiri di folder `pages`  harus 
+    // kemudian diinisialisasi disini.
+    //-------------------------------------------------------------------------
+
+    welcomePage = Page(&WelcomePage);
+    loginPage = Page(&LoginPage);
 
     //-------------------------------------------------------------------------
     // Tulis halaman yang ingin ditampilkan saat program pertama kali 

@@ -7,11 +7,19 @@
 // Import kode-kode dari file lain yang diperlukan.
 //-----------------------------------------------------------------------------
 
-#include "../utils/router.hpp"          // Sistem routing utk navigasi halaman
 #include "../components/Page.hpp"       // Komponen halaman aplikasi
-#include "WelcomePage.hpp"              // Halaman welcome
-#include "LoginPage.hpp"                // Halaman login
+#include "../utils/router.hpp"          // Sistem routing utk navigasi halaman
 
+
+//-----------------------------------------------------------------------------
+// # Deklarasi komponen halaman
+//-----------------------------------------------------------------------------
+// Deklarasi objek halaman yang akan digunakan di aplikasi disini, lalu
+// buat file .hpp baru untuk mengimplementasikan halaman tersebut.
+//-----------------------------------------------------------------------------
+
+Page welcomePage;
+Page loginPage;
 
 //-----------------------------------------------------------------------------
 
