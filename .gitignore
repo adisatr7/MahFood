@@ -5,3 +5,6 @@
 main
 main.exe
 main.dmg
+
+# Abaikan tempat sampah
+.trash/**/*
