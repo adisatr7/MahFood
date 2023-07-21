@@ -54,6 +54,23 @@ struct LinkedList {
     }
 
     /**
+     * Mendapatkan elemen pada posisi tertentu.
+     * 
+     * @param index Indeks posisi yang dituju.
+     * 
+     * @return Elemen pada index yang diberikan.
+     */
+    T get(int index) const {
+        Node<T>* current = head;
+        int indexCursor = 0;
+        while (current != nullptr && indexCursor < index) {
+            current = current->next;
+            indexCursor++;
+        }
+        return current->data;
+    }
+
+    /**
      * Menambahkan elemen baru ke dalam Linked List. Nilai elemen baru akan
      * disimpan di akhir (tail) dari Linked List.
      * 
