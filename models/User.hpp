@@ -1,4 +1,4 @@
-#include "Item.hpp"
+#include "Transaction.hpp"
 #include "../components/LinkedList.hpp"
 
 #ifndef USER_HPP
@@ -9,10 +9,10 @@
  * Akun yang akan digunakan untuk login ke aplikasi.
  */ 
 struct User {
-    string id;                  /** ID yang digunakan untuk login. */
-    string name;                /** Nama lengkap user. */
-    string password;            /** Password yang digunakan untuk login. */
-    LinkedList<Item> cart;      /** Keranjang belanja user. */
+    string id;                      /** ID yang digunakan untuk login. */
+    string name;                    /** Nama lengkap user. */
+    string password;                /** Password yang digunakan untuk login. */
+    LinkedList<Transaction> cart;   /** Keranjang belanja user. */
 
     /**
      * Konstruktor Account.
@@ -25,7 +25,6 @@ struct User {
         this->id = id;
         this->name = name;
         this->password = password;
-        this->cart = LinkedList<Item>();
     }
 
     // Default constructor
@@ -33,7 +32,6 @@ struct User {
         this->id = "";
         this->name = "";
         this->password = "";
-        this->cart = LinkedList<Item>();
     }
 };
 

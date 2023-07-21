@@ -24,7 +24,20 @@ void HomePage() {
     cout << endl;
     cout << "Semoga harimu menyenangkan, " << currentUser.name << "!" << endl;
     cout << endl;
-    // TODO: Add cart status
+    
+    // Menampilkan daftar belanjaan user (jika ada)
+    if (currentUser.cart.length() > 0) {
+        cout << "Kamu memiliki " << currentUser.cart.length() << " item di keranjangmu:" << endl;
+        for (int i = 0; i < currentUser.cart.length(); i++) {
+            Transaction transaction = currentUser.cart.get(i);
+            Item item = *transaction.itemPointer;
+            int qty = currentUser.cart.get(i).quantity;
+            cout << i+1 << ". " << item.name << " (x" << qty << ") - Rp " << item.price << endl;
+        }
+        cout << endl;
+    }
+
+
     menuSelect();
 
     switch (menuChoice) {
