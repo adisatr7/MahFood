@@ -24,7 +24,8 @@ string inputString(string prompt) {
     cout << prompt;
 
     // Reset buffer cin utk mencegah bug inputan sebelumnya ikut terbaca
-    cin.ignore();
+    if (cin.peek() == '\n')
+        cin.ignore();
 
     // Minta input user
     getline(cin, input);
