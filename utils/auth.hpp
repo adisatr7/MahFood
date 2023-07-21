@@ -1,8 +1,11 @@
-#ifndef AUTH_HPP
-#define AUTH_HPP
-
 #include "../models/User.hpp"
 #include "../data/accounts.hpp"
+#include "../global/states.hpp"
+
+using global::currentUser;
+
+#ifndef AUTH_HPP
+#define AUTH_HPP
 
 
 /**

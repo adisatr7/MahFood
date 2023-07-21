@@ -4,12 +4,12 @@
 // Berisi konstanta escape code untuk menghias output di terminal. 
 //============================================================================
 
-#ifndef GLOBAL_STYLES_HPP
-#define GLOBAL_STYLES_HPP
-
 #include <iostream>
 
 using std::string;
+
+#ifndef GLOBAL_STYLES_HPP
+#define GLOBAL_STYLES_HPP
 
 
 namespace BG_COLOR {

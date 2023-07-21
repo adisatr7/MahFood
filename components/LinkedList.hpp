@@ -1,11 +1,11 @@
-#ifndef LINKEDLIST_HPP
-#define LINKEDLIST_HPP
-
 #include <iostream>
 
 using std::cout;
 using std::endl;
 using std::string;
+
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 
 
 /**
@@ -51,6 +51,23 @@ struct LinkedList {
     LinkedList() {
         Node<T> *head = nullptr;       // Pointer menuju Node pertama.
         Node<T> *tail = nullptr;       // Pointer menuju Node terakhir.
+    }
+
+    /**
+     * Mendapatkan elemen pada posisi tertentu.
+     * 
+     * @param index Indeks posisi yang dituju.
+     * 
+     * @return Elemen pada index yang diberikan.
+     */
+    T get(int index) const {
+        Node<T>* current = head;
+        int indexCursor = 0;
+        while (current != nullptr && indexCursor < index) {
+            current = current->next;
+            indexCursor++;
+        }
+        return current->data;
     }
 
     /**

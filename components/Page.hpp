@@ -1,10 +1,10 @@
-#ifndef PAGE_HPP
-#define PAGE_HPP
-
 #include <string>
 #include "../utils/terminalHelper.hpp"
 
 using std::string;
+
+#ifndef PAGE_HPP
+#define PAGE_HPP
 
 
 /**

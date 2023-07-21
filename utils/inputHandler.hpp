@@ -1,11 +1,11 @@
-#ifndef INPUTHANDLER_HPP
-#define INPUTHANDLER_HPP
-
 #include <iostream>
 
 using std::cin;
 using std::getline;
 using std::invalid_argument;
+
+#ifndef INPUTHANDLER_HPP
+#define INPUTHANDLER_HPP
 
 
 /**
@@ -87,49 +87,6 @@ string inputPassword(string prompt) {
 char keyPress(string prompt) {
     cout << prompt;
     return getch();
-}
-
-
-/**
- * Handles menu selection with arrow keys and enter key
- * 
- * @param choice Selected option
- * @param options Array of options
- * @param length Length of options array
- */
-void menuSelect(int* choice, string options[], int length) {
-
-    // Variable utk menentukan kapan loop berhenti
-    MenuKey key;
-
-    // Cetak semua opsi
-    for (int i = 0; i < length; i++) {
-
-        // Style utk opsi yang dipilih
-        if (i == *choice) {
-            cout << STYLE::HIGHLIGHT << options[i] << STYLE::RESET << endl;
-        } 
-        
-        // Style utk opsi-opsi lain
-        else {
-            cout << options[i] << endl;
-        }
-    }
-
-    // Menerima input tombol keyboard dari user
-    key = getMenuKeyPress();
-
-    // Handle inputan user
-    if (key == UP && *choice > 0) {
-        (*choice)--;
-    } else if (key == DOWN && *choice < length - 1) {
-        (*choice)++;
-    } else if (key == ENTER) {
-        return;
-    }
-
-    // Muat ulang halaman  agar menu menampilkan opsi yg sekarang dipilih
-    reloadPage();
 }
 
 #endif

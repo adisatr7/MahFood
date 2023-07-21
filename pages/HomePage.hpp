@@ -1,33 +1,36 @@
 #include "../config.hpp"
+#include "../data/items.hpp"
 #include "../global/states.hpp"
 #include "../utils/router.hpp"
 #include "../utils/inputHandler.hpp"
 #include "../utils/menuSelect.hpp"
 
-#ifndef WELCOMEPAGE_HPP
-#define WELCOMEPAGE_HPP
+using global::currentUser;
+
+#ifndef HOMEPAGE_HPP
+#define HOMEPAGE_HPP
 
 
-void WelcomePage() {
+void HomePage() {
 
-    options.push("Daftar Sekarang");
-    options.push("Sudah Punya Akun? Masuk");
+    options.push("Buat Pesanan");
+    options.push("Lihat Keranjang ");
     options.push("Keluar");
 
     cout << "================================" << endl;
     cout << "   Selamat datang di " << RESTAURANT_NAME << endl;
     cout << "================================" << endl;
     cout << endl;
+    cout << "Semoga harimu menyenangkan, " << currentUser.name << "!" << endl;
+    cout << endl;
     menuSelect();
 
     switch (menuChoice) {
         case 0:
-            navigate(&registerPage);
-            resetMenuChoice();
+            // navigate(&menuPage);
             break;
         case 1:
-            navigate(&loginPage);
-            resetMenuChoice();
+            // navigate(&orderPage);
             break;
         case 2:
             global::keepRunning = false;

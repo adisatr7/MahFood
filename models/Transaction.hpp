@@ -1,7 +1,7 @@
+#include "Item.hpp"
+
 #ifndef TRANSACTION_HPP
 #define TRANSACTION_HPP
-
-#include "Item.hpp"
 
 
 struct Transaction {

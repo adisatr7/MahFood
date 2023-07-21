@@ -1,8 +1,8 @@
-#ifndef USER_H
-#define USER_H
-
 #include "../pages/routes.hpp"
 #include "../utils/terminalHelper.hpp"
+
+#ifndef USER_H
+#define USER_H
 
 
 /**
@@ -14,20 +14,20 @@ Page* currentPagePointer;
 /**
  * Pindah ke halaman lain.
  * 
- * @param pagePointer Pointer menuju komponen halaman yang dituju.
+ * @param newPagePointer Pointer menuju komponen halaman yang dituju.
  * 
  * @return `0` jika berhasil, `-1` jika gagal.
  */
-int navigate(Page *pagePointer) {
+int navigate(Page *newPagePointer) {
     try {
+        // Ubah pointer halaman aktif menjadi pointer halaman dituju
+        currentPagePointer = newPagePointer;
+
         // Bersihkan layar
         clearScreen();
 
         // Tampilkan halaman yang dituju
-        (*pagePointer).loadPage();
-
-        // Ubah pointer halaman aktif menjadi pointer halaman dituju
-        currentPagePointer = pagePointer;
+        (*newPagePointer).loadPage();
 
         // Kembalikan 0 sebagai penanda operasi berhasil
         return 0;

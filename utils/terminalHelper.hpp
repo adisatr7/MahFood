@@ -1,11 +1,11 @@
-#ifndef TERMINALHELPER_HPP
-#define TERMINALHELPER_HPP
-
 #include <iostream>
 #include <termios.h>
 #include <unistd.h>
 
 using std::cout;
+
+#ifndef TERMINALHELPER_HPP
+#define TERMINALHELPER_HPP
 
 
 /**

@@ -19,7 +19,7 @@
 #include "./pages/WelcomePage.hpp"  // Halaman awal aplikasi
 #include "./pages/LoginPage.hpp"    // Halaman login
 #include "./pages/RegisterPage.hpp" // Halaman register
-// #include "./pages/MainMenuPage.hpp" // Halaman menu utama
+#include "./pages/HomePage.hpp"     // Halaman home
 
 
 //-----------------------------------------------------------------------------
@@ -60,7 +60,7 @@ int main() {
     welcomePage = Page(&WelcomePage);
     loginPage = Page(&LoginPage);
     registerPage = Page(&RegisterPage);
-    // mainMenuPage = Page(&MainMenuPage);
+    homePage = Page(&HomePage);
 
     //-------------------------------------------------------------------------
     // Tulis halaman yang ingin ditampilkan saat program pertama kali 
