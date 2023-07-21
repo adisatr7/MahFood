@@ -10,17 +10,8 @@
  */
 template <typename T>
 struct Node {
-
-    /** 
-     * Data yang akan disimpan.
-     */
-    T data;
-
-    /** 
-     * Pointer menuju Node berikutnya.
-     */
-    Node *next;     
-
+    T data;         /** Data yang akan disimpan. */
+    Node *next;     /** Pointer menuju Node berikutnya. */
 
     /**
      * Konstruktor Node. Digunakan untuk membuat Node baru.
@@ -47,16 +38,8 @@ struct Node {
  */
 template <typename T>
 struct LinkedList {
-
-    /**
-     * Pointer menuju Node pertama di Linked List.
-     */
-    Node<T>* head;
-
-    /**
-     * Pointer menuju Node terakhir di Linked List.
-     */
-    Node<T>* tail;
+    Node<T>* head;      /** Pointer menuju Node pertama di Linked List. */
+    Node<T>* tail;      /** Pointer menuju Node terakhir di Linked List. */
 
     /**
      * Konstruktor LinkedList yang digunakan untuk membuat Linked List baru.
