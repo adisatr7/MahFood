@@ -39,6 +39,7 @@ Page welcomePage;
 Page loginPage;
 Page registerPage;
 Page homePage;
+Page shopPage;
 
 //-----------------------------------------------------------------------------
 

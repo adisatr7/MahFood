@@ -13,6 +13,7 @@ using global::currentUser;
 
 void HomePage() {
 
+    // Daftar pilihan yang dapat dipilih user lewat menu
     options.push("Buat Pesanan");
     options.push("Lihat Keranjang ");
     options.push("Keluar");
@@ -23,11 +24,12 @@ void HomePage() {
     cout << endl;
     cout << "Semoga harimu menyenangkan, " << currentUser.name << "!" << endl;
     cout << endl;
+    // TODO: Add cart status
     menuSelect();
 
     switch (menuChoice) {
         case 0:
-            // navigate(&menuPage);
+            navigate(&shopPage);
             break;
         case 1:
             // navigate(&orderPage);
