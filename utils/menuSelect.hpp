@@ -56,7 +56,7 @@ void menuSelect() {
     } else if (key == DOWN && menuChoice < options.length() - 1) {
         (menuChoice)++;
     } else if (key == ENTER) {
-        options.clear();
+        resetMenuChoice();
         return;
     }
 
