@@ -14,7 +14,8 @@
  * @return `true` jika valid, `false` jika tidak.
  */
 bool validateId(string id) {
-    return id.length() < 2 && id.length() > 20;
+    bool idExists = isUserIdExist(id);
+    return id.length() >= 2 && id.length() < 20 && !idExists;
 }
 
 
@@ -48,7 +49,7 @@ bool validateName(string name) {
  * @return `true` jika valid, `false` jika tidak.
 */
 bool validatePassword(string password) {
-    return password.length() < 5 && password.length() > 20;
+    return password.length() >= 5 && password.length() < 20;
 }
 
 
@@ -61,7 +62,7 @@ bool validatePassword(string password) {
  * @return `true` jika valid, `false` jika tidak.
  */
 bool validateConfirmPassword(string password, string confirmPassword) {
-    return password != confirmPassword;
+    return password == confirmPassword;
 }
 
 
@@ -89,14 +90,14 @@ void RegisterPage() {
     confirmPassword = inputPassword("Ulangi kata sandi: ");
     isConfirmPasswordValid = validateConfirmPassword(password, confirmPassword);
 
+    cout << endl;
     
     if (isIdValid && isNameValid && isPasswordValid && isConfirmPasswordValid) {
         bool success = registerUser(id, name, password);
 
         if (success) {
-            cout << endl;
             cout << "Register berhasil!" << endl;
-            cout << "Silakan login dengan id dan password yang sudah didaftarkan!" << endl;
+            cout << "Silakan login dengan ID dan password yang sudah didaftarkan!" << endl;
             cout << endl;
             cout << "Tekan enter untuk kembali ke halaman login...";
             getch();
@@ -104,9 +105,18 @@ void RegisterPage() {
             return;
         }
     } 
-    
-    cout << endl;
+
     cout << "Registrasi gagal!" << endl;
+
+    if (!isIdValid)
+        cout << "ID harus setidaknya 3-20 karakter!" <<endl;
+    // if (!isNameValid)
+    //     cout << "ID harus setidaknya 3-20 karakter!" <<endl;
+    if (!isPasswordValid)
+        cout << "Kata sandi harus setidaknya! 6-20 karakter!" <<endl;
+    if (!isConfirmPasswordValid)
+        cout << "Kata sandi yang dimasukkan tidak sama!" <<endl;
+
     cout << endl;
     cout << "Tekan sembarang tombol untuk kembali ke halaman awal...";
     getch();

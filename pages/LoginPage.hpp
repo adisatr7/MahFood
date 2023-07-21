@@ -44,7 +44,7 @@ void LoginPage() {
     cout << "=========================================" << endl;
     cout << endl;
     idInput = inputString("Masukkan ID: ");
-    passwordInput = inputString("Masukkan password: ");
+    passwordInput = inputPassword("Masukkan password: ");
     cout << endl;
 
     handleLogin(idInput, passwordInput);

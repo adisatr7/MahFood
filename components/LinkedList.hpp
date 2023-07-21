@@ -14,19 +14,28 @@ struct Node {
     /** 
      * Data yang akan disimpan.
      */
-    T data;         
+    T data;
 
     /** 
      * Pointer menuju Node berikutnya.
      */
-    Node* next;     
+    Node *next;     
 
 
     /**
      * Konstruktor Node. Digunakan untuk membuat Node baru.
+     * 
+     * @param value Reference ke data yang akan disimpan.
      */
     Node(const T& value) {
-        this->data = data;
+        this->data = value;
+        this->next = nullptr;
+    }
+
+    /**
+     * Konstruktor kosong.
+     */
+    Node() {
         this->next = nullptr;
     }
 };

@@ -26,7 +26,11 @@ struct User {
     }
 
     // Default constructor
-    User() : id(""), name(""), password("") {}
+    User() {
+        this->id = "";
+        this->name = "";
+        this->password = "";
+    }
 };
 
 #endif
