@@ -28,6 +28,15 @@
 int main() {
 
     //-------------------------------------------------------------------------
+    // Daftar akun yang sudah terdaftar di aplikasi secara default untuk
+    // keperluan testing.
+    //-------------------------------------------------------------------------
+
+    registeredUsers.push(User("admin", "Miguel Harvey", "123456"));
+    registeredUsers.push(User("alex", "Alexander Lloyd", "123456"));
+    registeredUsers.push(User("peter", "Peter Wheeler", "123456"));
+
+    //-------------------------------------------------------------------------
     // Komponen halaman yang sudah dideklarasikan di `routes.hpp` dan 
     // diimplementasikan di file .hpp-nya sendiri di folder `pages`  harus 
     // kemudian diinisialisasi disini.
