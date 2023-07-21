@@ -1,7 +1,7 @@
 #ifndef AUTH_HPP
 #define AUTH_HPP
 
-#include "../data/User.hpp"
+#include "../models/User.hpp"
 #include "../stores/accounts.hpp"
 
 

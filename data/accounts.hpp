@@ -1,7 +1,7 @@
 #ifndef ACCOUNTS_HPP
 #define ACCOUNTS_HPP
 
-#include "../data/User.hpp"
+#include "../models/User.hpp"
 #include "../components/LinkedList.hpp"
 
 
