@@ -2,6 +2,7 @@
 #define WELCOMEPAGE_HPP
 
 #include "../config.hpp"
+#include "../global/states.hpp"
 #include "../utils/router.hpp"
 #include "../utils/inputHandler.hpp"
 

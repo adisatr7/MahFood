@@ -1,7 +1,7 @@
 #ifndef INPUTHANDLER_HPP
 #define INPUTHANDLER_HPP
 
-#include "router.hpp"
+#include <iostream>
 
 using std::cin;
 using std::getline;

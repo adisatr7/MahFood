@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+using std::cout;
+using std::endl;
+using std::string;
+
 
 /**
  * Wadah untuk menyimpan data (elemen) di dalam Linked List. Disini menggunakan 
