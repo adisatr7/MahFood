@@ -15,9 +15,11 @@
 
 #include "./global/states.hpp"      // Global variables
 #include "./global/styles.hpp"      // Global styles
-#include "./pages/WelcomePage.hpp"  // Semua halaman aplikasi
-#include "./pages/LoginPage.hpp"    // Semua halaman aplikasi
-#include "./pages/RegisterPage.hpp" // Semua halaman aplikasi
+#include "./data/items.hpp"         // Daftar item yang dapat dibeli
+#include "./pages/WelcomePage.hpp"  // Halaman awal aplikasi
+#include "./pages/LoginPage.hpp"    // Halaman login
+#include "./pages/RegisterPage.hpp" // Halaman register
+// #include "./pages/MainMenuPage.hpp" // Halaman menu utama
 
 
 //-----------------------------------------------------------------------------
@@ -28,8 +30,21 @@
 int main() {
 
     //-------------------------------------------------------------------------
+    // Daftar item yang dapat user beli oleh user melalui aplikasi.
+    //-------------------------------------------------------------------------
+    // --> items.push(Item("nama", harga, stok, "kategori"))
+    //-------------------------------------------------------------------------
+
+    items.push(Item("Mendoan", 1000, 23, "Gorengan"));
+    items.push(Item("Tahu", 1000, 30, "Gorengan"));
+    items.push(Item("Es Teh", 3000, 19, "Minuman"));
+    items.push(Item("Es Jeruk", 4000, 20, "Minuman"));
+
+    //-------------------------------------------------------------------------
     // Daftar akun yang sudah terdaftar di aplikasi secara default untuk
     // keperluan testing.
+    //-------------------------------------------------------------------------
+    // --> registeredUsers.push(User*("username", "nama", "password")))
     //-------------------------------------------------------------------------
 
     registeredUsers.push(User("admin", "Miguel Harvey", "123456"));

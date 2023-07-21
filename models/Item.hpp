@@ -13,7 +13,6 @@ using std::endl;
  * Definisi struct Item yang merupakan item yang dijual di restoran.
  */
 struct Item {
-    string id;          /** ID item. */
     string name;        /** Nama item. */
     int price;          /** Harga dari item dalam satuan Rupiah. */
     int stock;          /** Jumlah item yang tersedia di restoran. */
@@ -22,14 +21,12 @@ struct Item {
     /**
      * Konstruktor Item
      * 
-     * @param id ID item.
      * @param name Nama item.
      * @param price Harga dari item dalam satuan Rupiah.
      * @param stock Jumlah item yang tersedia di restoran,
      * @param category Kategori item.
      */
-    Item(string id, string name, int price, int stock, string category) {
-        this->id = id;
+    Item(string name, int price, int stock, string category) {
         this->name = name;
         this->price = price;
         this->stock = stock;
@@ -40,7 +37,6 @@ struct Item {
      * Konstruktor kosong.
      */
     Item() {
-        this->id = "";
         this->name = "";
         this->price = 0;
         this->stock = 0;
@@ -53,11 +49,10 @@ struct Item {
      * @return string yang berisi informasi item.
      */
     string toString() const {
-        return "ID: " + this->id + "\n"
-            + "Nama: " + this->name + "\n"
-            + "Harga: " + to_string(this->price) + "\n"
-            + "Jumlah Tersedia: " + to_string(this->stock) + "\n"
-            + "Kategori: " + this->category + "\n";
+        return "Nama: " + this->name + "\n"
+             + "Harga: " + to_string(this->price) + "\n"
+             + "Jumlah Tersedia: " + to_string(this->stock) + "\n"
+             + "Kategori: " + this->category + "\n";
     }
 
     /**
