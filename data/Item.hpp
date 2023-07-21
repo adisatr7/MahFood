@@ -16,7 +16,7 @@ struct Item {
     string id;          /** ID item. */
     string name;        /** Nama item. */
     int price;          /** Harga dari item dalam satuan Rupiah. */
-    int quantity;       /** Jumlah item yang tersedia di restoran. */
+    int stock;          /** Jumlah item yang tersedia di restoran. */
     string category;    /** Kategori item. */
 
     /**
@@ -25,15 +25,26 @@ struct Item {
      * @param id ID item.
      * @param name Nama item.
      * @param price Harga dari item dalam satuan Rupiah.
-     * @param quantity Jumlah item yang tersedia di restoran,
+     * @param stock Jumlah item yang tersedia di restoran,
      * @param category Kategori item.
      */
-    Item(string id, string name, int price, int quantity, string category) {
+    Item(string id, string name, int price, int stock, string category) {
         this->id = id;
         this->name = name;
         this->price = price;
-        this->quantity = quantity;
+        this->stock = stock;
         this->category = category;
+    }
+
+    /**
+     * Konstruktor kosong.
+     */
+    Item() {
+        this->id = "";
+        this->name = "";
+        this->price = 0;
+        this->stock = 0;
+        this->category = "";
     }
 
     /**
@@ -45,7 +56,7 @@ struct Item {
         return "ID: " + this->id + "\n"
             + "Nama: " + this->name + "\n"
             + "Harga: " + to_string(this->price) + "\n"
-            + "Jumlah Tersedia: " + to_string(this->quantity) + "\n"
+            + "Jumlah Tersedia: " + to_string(this->stock) + "\n"
             + "Kategori: " + this->category + "\n";
     }
 
