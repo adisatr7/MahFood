@@ -14,8 +14,15 @@
  * @return `true` jika valid, `false` jika tidak.
  */
 bool validateId(string id) {
-    bool idExists = isUserIdExist(id);
-    return id.length() >= 2 && id.length() < 20 && !idExists;
+    if (id.length() <= 3) {
+        cout << "ID minimal 3 karakter." << endl;
+        return false;
+    } else if (id.length() > 32) {
+        cout << "ID maksimal 32 karakter." << endl;
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -49,7 +56,15 @@ bool validateName(string name) {
  * @return `true` jika valid, `false` jika tidak.
 */
 bool validatePassword(string password) {
-    return password.length() >= 5 && password.length() < 20;
+    if (password.length() <= 6) {
+        cout << "Kata sandi minimal 6 karakter." << endl;
+        return false;
+    } else if (password.length() > 20) {
+        cout << "Kata sandi maksimal 20 karakter." << endl;
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -62,7 +77,12 @@ bool validatePassword(string password) {
  * @return `true` jika valid, `false` jika tidak.
  */
 bool validateConfirmPassword(string password, string confirmPassword) {
-    return password == confirmPassword;
+    if (password != confirmPassword) {
+        cout << "Kata sandi tidak sama." << endl;
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -71,7 +91,7 @@ bool validateConfirmPassword(string password, string confirmPassword) {
  */
 void RegisterPage() {
     string id, name, password, confirmPassword;
-    bool isIdValid, isNameValid, isPasswordValid, isConfirmPasswordValid;
+    // bool isIdValid, isNameValid, isPasswordValid, isConfirmPasswordValid;
 
     cout << "=================" << endl;
     cout << "   Daftar Akun   " << endl;
@@ -79,24 +99,20 @@ void RegisterPage() {
     cout << endl;
 
     id = inputString("Masukkan ID: ");
-    isIdValid = validateId(id);
-
     name = inputString("Masukkan nama lengkap: ");
-    isNameValid = validateName(name);
-
     password = inputPassword("Masukkan kata sandi: ");
-    isPasswordValid = validatePassword(password);
-
     confirmPassword = inputPassword("Ulangi kata sandi: ");
-    isConfirmPasswordValid = validateConfirmPassword(password, confirmPassword);
-
     cout << endl;
     
-    if (isIdValid && isNameValid && isPasswordValid && isConfirmPasswordValid) {
+    if (validateId(id) && 
+        validateName(name) && 
+        validatePassword(password) && 
+        validateConfirmPassword(password, confirmPassword)) {
+
         bool success = registerUser(id, name, password);
 
         if (success) {
-            cout << "Register berhasil!" << endl;
+            cout << "Registrasi akun baru berhasil!" << endl;
             cout << "Silakan login dengan ID dan password yang sudah didaftarkan!" << endl;
             cout << endl;
             cout << "Tekan enter untuk kembali ke halaman login...";
@@ -107,16 +123,7 @@ void RegisterPage() {
     } 
 
     cout << "Registrasi gagal!" << endl;
-
-    if (!isIdValid)
-        cout << "ID harus setidaknya 3-20 karakter!" <<endl;
-    // if (!isNameValid)
-    //     cout << "ID harus setidaknya 3-20 karakter!" <<endl;
-    if (!isPasswordValid)
-        cout << "Kata sandi harus setidaknya! 6-20 karakter!" <<endl;
-    if (!isConfirmPasswordValid)
-        cout << "Kata sandi yang dimasukkan tidak sama!" <<endl;
-
+    
     cout << endl;
     cout << "Tekan sembarang tombol untuk kembali ke halaman awal...";
     getch();
