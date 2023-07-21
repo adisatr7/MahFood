@@ -55,6 +55,22 @@ void __enableCanonicalMode() {
 
 
 /**
+ * Menyembunyikan kursor terminal.
+ */
+void __disableCursor() {
+    cout << "\033[?25l";
+}
+
+
+/**
+ * Menampilkan kursor terminal.
+ */
+void __enableCursor() {
+    cout << "\033[?25h";
+}
+
+
+/**
  * Menghandle input tombol keyboard dari user.
  * 
  * @return Karakter yang dimasukkan user dalam tipe data `int`.
@@ -64,11 +80,17 @@ int getch() {
     // Matikan mode kanonik dan echo pada terminal
     __disableCanonicalMode();
 
+    // Sembunyikan kursor terminal
+    __disableCursor();
+
     // Variable untuk menyimpan karakter yang dimasukkan user
     int ch;
 
     // Baca karakter dari input tanpa menunggu Enter
     ch = getchar();
+
+    // Tampilkan kursor terminal
+    __enableCursor();
     
     // Kembalikan pengaturan terminal ke semula
     __enableCanonicalMode();
