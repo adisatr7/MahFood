@@ -1,34 +1,39 @@
+#include <iostream>
 #include "../config.hpp"
+#include "../data/items.hpp"
 #include "../global/states.hpp"
 #include "../utils/router.hpp"
 #include "../utils/inputHandler.hpp"
 
-#ifndef WELCOMEPAGE_HPP
-#define WELCOMEPAGE_HPP
+using global::currentUser;
 
 
 int input = 0;
 
 string options[] = {
-    "Daftar Akun Baru",
-    "Sudah Punya Akun? Masuk",
+    "Lihat Menu",
+    "Lihat Pesanan",
     "Keluar"
 };
 
+#ifndef HOMEPAGE_HPP
+#define HOMEPAGE_HPP
 
-void WelcomePage() {
+void HomePage() {
+
     cout << "================================" << endl;
     cout << "   Selamat datang di " << RESTAURANT_NAME << endl;
     cout << "================================" << endl;
     cout << endl;
+    cout << "Semoga harimu menyenangkan, " << currentUser.name << "!" << endl;
     menuSelect(&input, options, 3);
 
     switch (input) {
         case 0:
-            navigate(&registerPage);
+            // navigate(&menuPage);
             break;
         case 1:
-            navigate(&loginPage);
+            // navigate(&orderPage);
             break;
         case 2:
             global::keepRunning = false;

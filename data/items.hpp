@@ -1,8 +1,8 @@
-#ifndef ITEMS_HPP
-#define ITEMS_HPP
-
 #include "../components/LinkedList.hpp"
 #include "../models/Item.hpp"
+
+#ifndef ITEMS_HPP
+#define ITEMS_HPP
 
 
 /**

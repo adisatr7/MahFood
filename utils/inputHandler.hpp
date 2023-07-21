@@ -1,11 +1,11 @@
-#ifndef INPUTHANDLER_HPP
-#define INPUTHANDLER_HPP
-
 #include <iostream>
 
 using std::cin;
 using std::getline;
 using std::invalid_argument;
+
+#ifndef INPUTHANDLER_HPP
+#define INPUTHANDLER_HPP
 
 
 /**

@@ -1,12 +1,12 @@
-#ifndef ITEM_HPP
-#define ITEM_HPP
-
 #include <iostream>
 
 using std::string;
 using std::to_string;
 using std::cout;
 using std::endl;
+
+#ifndef ITEM_HPP
+#define ITEM_HPP
 
 
 /**

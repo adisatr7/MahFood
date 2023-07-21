@@ -1,11 +1,11 @@
-#ifndef LINKEDLIST_HPP
-#define LINKEDLIST_HPP
-
 #include <iostream>
 
 using std::cout;
 using std::endl;
 using std::string;
+
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 
 
 /**

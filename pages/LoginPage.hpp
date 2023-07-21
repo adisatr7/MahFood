@@ -1,9 +1,9 @@
-#ifndef LOGINPAGE_HPP
-#define LOGINPAGE_HPP
-
 #include "../utils/auth.hpp"
 #include "../utils/inputHandler.hpp"
 #include "../utils/router.hpp"
+
+#ifndef LOGINPAGE_HPP
+#define LOGINPAGE_HPP
 
 
 /**
@@ -19,7 +19,7 @@ void handleLogin(string idInput, string passwordInput) {
         cout << "Login berhasil!" << endl;
         cout << "Tekan sembarang tombol untuk melanjutkan... " << endl;
         getch();
-        navigate(&mainMenuPage);
+        navigate(&homePage);
     }
     
     // Jika login gagal, tampilkan pesan gagal dan reload halaman login

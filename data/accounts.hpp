@@ -1,19 +1,13 @@
-#ifndef ACCOUNTS_HPP
-#define ACCOUNTS_HPP
-
 #include "../models/User.hpp"
 #include "../components/LinkedList.hpp"
+
+#ifndef ACCOUNTS_HPP
+#define ACCOUNTS_HPP
 
 
 /**
  * Linked List utk menyimpan data user yang sudah terdaftar.
  */
 LinkedList<User> registeredUsers = LinkedList<User>();
-
-
-/**
- * User yang sedang login.
- */
-User currentUser = User("", "", "");
 
 #endif
