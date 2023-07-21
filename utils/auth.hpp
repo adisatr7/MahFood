@@ -2,7 +2,7 @@
 #define AUTH_HPP
 
 #include "../models/User.hpp"
-#include "../stores/accounts.hpp"
+#include "../data/accounts.hpp"
 
 
 /**
