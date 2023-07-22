@@ -1,8 +1,14 @@
 #include <iostream>
+#include <memory>
 
 using std::cout;
 using std::endl;
 using std::string;
+
+using std::unique_ptr;
+using std::make_unique;
+using std::move;
+using std::out_of_range;
 
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
@@ -14,8 +20,8 @@ using std::string;
  */
 template <typename T>
 struct Node {
-    T data;         /** Data yang akan disimpan. */
-    Node *next;     /** Pointer menuju Node berikutnya. */
+    T data;                     /** Data yang akan disimpan. */
+    unique_ptr<Node<T>> next;   /** Pointer unik menuju Node selanjutnya. */
 
     /**
      * Konstruktor Node. Digunakan untuk membuat Node baru.
@@ -42,16 +48,35 @@ struct Node {
  */
 template <typename T>
 struct LinkedList {
-    Node<T>* head;      /** Pointer menuju Node pertama di Linked List. */
-    Node<T>* tail;      /** Pointer menuju Node terakhir di Linked List. */
+    unique_ptr<Node<T>> head;   /** Pointer menuju Node pertama di Linked List. */
+    Node<T> *tail;              /** Pointer menuju Node terakhir di Linked List. */
 
     /**
      * Konstruktor LinkedList yang digunakan untuk membuat Linked List baru.
      */
     LinkedList() {
-        Node<T> *head = nullptr;       // Pointer menuju Node pertama.
-        Node<T> *tail = nullptr;       // Pointer menuju Node terakhir.
+        head = nullptr;
+        tail = nullptr;
     }
+
+    /**
+     * Entah kenapa, jika tidak ada konstruktor copy, smart pointer
+     * tidak dapat bekerja sebagai mana mestinya. Pusing...
+     */
+    LinkedList(const LinkedList<T>& other) {
+        head = nullptr;
+        tail = nullptr;
+
+        // Buat pointer baru yang menunjuk ke head dari Linked List.
+        Node<T>* current = other.head.get();
+
+        // Salin seluruh elemen dari Linked List lain.
+        while (current != nullptr) {
+            push(current->data);
+            current = current->next.get();
+        }
+    }
+
 
     /**
      * Mendapatkan elemen pada posisi tertentu.
@@ -61,14 +86,25 @@ struct LinkedList {
      * @return Elemen pada index yang diberikan.
      */
     T get(int index) const {
-        Node<T>* current = head;
+
+        // Cek apakah index yang dituju valid.
+        if (index < 0 || index >= length())
+            cout << "Error: Index tidak valid!" << endl;
+
+        // Cursor untuk menelusuri Linked List.
         int indexCursor = 0;
+
+        // Pointer menuju Node yang ditunjuk oleh cursor. Dimulai dari head.
+        Node<T>* current = head.get();
+
+        // Telusuri Linked List hingga index yang dituju.
         while (current != nullptr && indexCursor < index) {
-            current = current->next;
+            current = current->next.get();
             indexCursor++;
         }
         return current->data;
     }
+
 
     /**
      * Menambahkan elemen baru ke dalam Linked List. Nilai elemen baru akan
@@ -81,18 +117,18 @@ struct LinkedList {
     void push(const T& value) {
 
         // Pointer menuju Node baru
-        Node<T>* newNode = new Node<T>(value);
+        unique_ptr<Node<T>> newNode = make_unique<Node<T>>(value);
 
         // Jika Linked List kosong, maka elemen baru akan menjadi elemen pertama.
         if (head == nullptr) {
-            head = newNode;
-            tail = newNode;
+            head = move(newNode);
+            tail = head.get();
             return;
         }
 
         // Jika Linked List tidak kosong, maka sisipkan elemen baru di akhir Linked List.
-        tail->next = newNode;
-        tail = newNode;
+        tail->next = move(newNode);
+        tail = tail->next.get();
     }
 
     /**
@@ -106,33 +142,33 @@ struct LinkedList {
     void insertAt(const T& value, int index) {
     
         // Pointer menuju Node baru
-        Node<T>* newNode = new Node<T>(value);
+        unique_ptr<Node<T>> newNode = make_unique<Node<T>>(value);
 
         int indexCursor = 0;            // Cursor untuk menelusuri Linked List.
         Node<T>* current = head;        // Pointer menuju Node yang ditunjuk oleh cursor.
 
         // Jika Linked List kosong, maka elemen baru akan menjadi elemen pertama.
         if (index == 0) {
-            newNode->next = head;
-            head = newNode;
+            newNode->next = move(head);
+            head = move(newNode);
             return;
         }
 
         // Jika Linked List tidak kosong, maka cari posisi yang dituju.
         while (current != nullptr && indexCursor < index - 1) {
-            current = current->next;
+            current = current->next.get();
             indexCursor++;
         }
 
         // Jika posisi yang dituju tidak valid, maka hentikan proses.
         if (current == nullptr) {
-            cout << "Index out of bound" << endl;
+            cout << "Error: Index tidak valid!" << endl;
             return;
         }
 
         // Jika posisi yang dituju valid, maka sisipkan elemen baru.
-        newNode->next = current->next;
-        current->next = newNode;
+        newNode->next = move(current->next);
+        current->next = move(newNode);
     }
 
     /**
@@ -142,38 +178,35 @@ struct LinkedList {
      * 
      * @return `0` jika berhasil, `-1` jika gagal.
      */
-    void removeHead(const T& value) {
+    int removeFirstNode(const T& value) {
 
         // Jika Linked List kosong, maka hentikan proses.
         if (head == nullptr) {
             cout << "Linked List is empty" << endl;
-            return;
+            return -1;
         }
 
         // Jika elemen pertama memiliki nilai yang dicari, maka hapus elemen pertama.
         if (head->data == value) {
-            Node<T>* temp = head;
-            head = head->next;
-            delete temp;
-            return;
+            head = move(head->next);
+            return 0;
         }
 
         // Jika elemen pertama tidak memiliki nilai yang dicari, maka cari elemen yang memiliki nilai yang dicari.
-        Node<T>* current = head;
+        Node<T>* current = head.get();
         while (current->next != nullptr && current->next->data != value) {
-            current = current->next;
+            current = current->next.get();
         }
 
         // Jika elemen yang memiliki nilai yang dicari tidak ditemukan, maka hentikan proses.
         if (current->next == nullptr) {
-            cout << "Value not found" << endl;
-            return;
+            cout << "Error: Data tidak ditemukan!" << endl;
+            return -1;
         }
 
         // Jika elemen yang memiliki nilai yang dicari ditemukan, maka hapus elemen tersebut.
-        Node<T>* temp = current->next;
-        current->next = current->next->next;
-        delete temp;
+        current->next = move(current->next->next);
+        return 0;
     }
 
     /**
@@ -183,38 +216,35 @@ struct LinkedList {
      * 
      * @return `0` jika berhasil, `-1` jika gagal.
      */
-    void removeTail(const T& value) {
+    int removeTail(const T& value) {
 
         // Jika Linked List kosong, maka hentikan proses.
         if (head == nullptr) {
-            cout << "Linked List is empty" << endl;
-            return;
+            cout << "Error: Linked List kosong!" << endl;
+            return -1;
         }
 
         // Jika Linked List hanya memiliki satu elemen, maka hapus elemen tersebut.
-        if (head->next == nullptr) {
-            Node<T>* temp = head;
-            head = nullptr;
-            delete temp;
-            return;
+        if (head->next == nullptr && head->data == value) {
+            head.reset();
+            return 0;
         }
 
         // Jika Linked List memiliki lebih dari satu elemen, maka cari elemen yang memiliki nilai yang dicari.
-        Node<T>* current = head;
-        while (current->next->next != nullptr && current->next->data != value) {
-            current = current->next;
+        Node<T>* current = head.get();
+        while (current->next != nullptr && current->next->data != value) {
+            current = current->next.get();
         }
 
         // Jika elemen yang memiliki nilai yang dicari tidak ditemukan, maka hentikan proses.
-        if (current->next->next == nullptr) {
+        if (current->next == nullptr) {
             cout << "Value not found" << endl;
-            return;
+            return -1;
         }
 
         // Jika elemen yang memiliki nilai yang dicari ditemukan, maka hapus elemen tersebut.
-        Node<T>* temp = current->next;
-        current->next = current->next->next;
-        delete temp;
+        current->next = move(current->next->next);
+        return 0;
     }
 
     /**
@@ -224,40 +254,37 @@ struct LinkedList {
      * 
      * @return `0` jika berhasil, `-1` jika gagal.
      */
-    void removeAt(int index) {
+    int removeAt(int index) {
          
         // Jika Linked List kosong, maka hentikan proses.
         if (head == nullptr) {
-            cout << "Linked List is empty" << endl;
-            return;
+            cout << "Error: Linked List kosong!" << endl;
+            return -1;
         }
 
         // Jika Linked List hanya memiliki satu elemen, maka hapus elemen tersebut.
         if (head->next == nullptr) {
-            Node<T>* temp = head;
-            head = nullptr;
-            delete temp;
-            return;
+            head.reset();
+            return 0;
         }
 
         // Jika Linked List memiliki lebih dari satu elemen, maka cari elemen yang memiliki nilai yang dicari.
-        Node<T>* current = head;
+        Node<T>* current = head.get();
         int indexCursor = 0;
-        while (current->next->next != nullptr && indexCursor < index - 1) {
-            current = current->next;
+        while (current->next != nullptr && indexCursor < index - 1) {
+            current = current->next.get();
             indexCursor++;
         }
 
         // Jika posisi yang dituju tidak valid, maka hentikan proses.
         if (current->next->next == nullptr) {
-            cout << "Index out of bound" << endl;
-            return;
+            cout << "Error: Index tidak valid!" << endl;
+            return -1;
         }
 
         // Jika posisi yang dituju valid, maka hapus elemen tersebut.
-        Node<T>* temp = current->next;
-        current->next = current->next->next;
-        delete temp;
+        current->next = move(current->next->next);
+        return 0;
     }
 
     /**
@@ -268,60 +295,25 @@ struct LinkedList {
     int length() const {
 
         // Jika Linked List kosong, maka panjang Linked List adalah 0.
-        if (head == nullptr) {
+        if (head == nullptr)
             return 0;
-        }
 
         // Jika Linked List tidak kosong, maka hitung panjang Linked List.
         int length = 0;
-        Node<T>* current = head;
+        Node<T>* current = head.get();
         while (current != nullptr) {
             length++;
-            current = current->next;
+            current = current->next.get();
         }
-
         return length;
     }
 
     /**
-     * Mencetak seluruh elemen yang ada di dalam Linked List.
-     */
-    void print() const {
-
-        // Pointer menuju Node pertama.
-        Node<T>* current = head;    
-
-        // Cetak seluruh elemen yang ada di dalam Linked List.
-        while (current != nullptr) {
-            cout << current->data << " -> ";
-            current = current->next;
-        }
-    }
-
-    /**
      * Menghapus seluruh elemen yang ada di dalam Linked List.
-     * 
-     * @return `0` jika berhasil, `-1` jika gagal.
      */
     void clear() {
-
-        // Jika Linked List kosong, maka hentikan proses.
-        if (head == nullptr) {
-            return;
-        }
-
-        // Pointer menuju Node pertama.
-        Node<T>* current = head;
-
-        // Hapus seluruh elemen yang ada di dalam Linked List.
-        while (current != nullptr) {
-            Node<T>* next = current->next;
-            delete current;
-            current = next;
-        }
-
-        // Atur nilai head menjadi nullptr.
-        head = nullptr;
+        // Gunakan reset() untuk menghapus elemen yang ada di dalam Linked List.
+        head.reset();
     }
 
     /**
