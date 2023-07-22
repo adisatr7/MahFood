@@ -29,8 +29,8 @@ LinkedList<string> options = LinkedList<string>();
  * Setel ulang pilihan menuChoice menjadi 0 dan menghapus semua opsi.
  */
 void resetMenuChoice() {
-    menuChoice = 0;
     options.clear();
+    menuChoice = 0;
 }
 
 /**

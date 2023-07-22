@@ -24,12 +24,12 @@ void WelcomePage() {
     switch (menuChoice) {
         case 0:
             navigate(&registerPage);
-            resetMenuChoice();
-            break;
+            // options.clear();
+            return;
         case 1:
             navigate(&loginPage);
-            resetMenuChoice();
-            break;
+            // options.clear();
+            return;
         case 2:
             global::keepRunning = false;
             break;

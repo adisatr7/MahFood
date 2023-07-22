@@ -27,7 +27,7 @@ int navigate(Page *newPagePointer) {
         clearScreen();
 
         // Tampilkan halaman yang dituju
-        (*newPagePointer).loadPage();
+        // (*newPagePointer).loadPage();
 
         // Kembalikan 0 sebagai penanda operasi berhasil
         return 0;

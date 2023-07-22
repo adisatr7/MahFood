@@ -77,7 +77,8 @@ int main() {
     //-------------------------------------------------------------------------
     
     while (global::keepRunning) {
-        navigate(currentPagePointer);
+        currentPagePointer->loadPage();
+        resetMenuChoice();
     }
 
     //-------------------------------------------------------------------------

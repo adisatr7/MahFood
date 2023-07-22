@@ -19,7 +19,7 @@ void ShopPage() {
         string itemPrice = "Rp " + to_string(items.get(i).price);
         options.push(items.get(i).name + " " + to_string(items.get(i).price));
     }
-    options.push("Kembali ke menu utama");
+    options.push("\nKembali ke menu utama");
 
     cout << "=================" << endl;
     cout << "   DAFTAR MENU   " << endl;
@@ -32,6 +32,7 @@ void ShopPage() {
     // Jika user memilih menu terakhir, kembali ke menu utama
     if (menuChoice == items.length()) {
         navigate(&homePage);
+        resetMenuChoice();
         return;
     }
     
