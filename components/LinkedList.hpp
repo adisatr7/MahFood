@@ -305,6 +305,11 @@ struct LinkedList {
      */
     void clear() {
 
+        // Jika Linked List kosong, maka hentikan proses.
+        if (head == nullptr) {
+            return;
+        }
+
         // Pointer menuju Node pertama.
         Node<T>* current = head;
 

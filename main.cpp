@@ -20,6 +20,7 @@
 #include "./pages/LoginPage.hpp"    // Halaman login
 #include "./pages/RegisterPage.hpp" // Halaman register
 #include "./pages/HomePage.hpp"     // Halaman home
+#include "./pages/ShopPage.hpp"     // Halaman shop
 
 
 //-----------------------------------------------------------------------------
@@ -35,10 +36,10 @@ int main() {
     // --> items.push(Item("nama", harga, stok, "kategori"))
     //-------------------------------------------------------------------------
 
-    items.push(Item("Mendoan", 1000, 23, "Gorengan"));
-    items.push(Item("Tahu", 1000, 30, "Gorengan"));
-    items.push(Item("Es Teh", 3000, 19, "Minuman"));
-    items.push(Item("Es Jeruk", 4000, 20, "Minuman"));
+    items.push(Item("Mendoan", 1000, "Gorengan"));
+    items.push(Item("Tahu", 1000, "Gorengan"));
+    items.push(Item("Es Teh", 3000, "Minuman"));
+    items.push(Item("Es Jeruk", 4000, "Minuman"));
 
     //-------------------------------------------------------------------------
     // Daftar akun yang sudah terdaftar di aplikasi secara default untuk
@@ -61,6 +62,7 @@ int main() {
     loginPage = Page(&LoginPage);
     registerPage = Page(&RegisterPage);
     homePage = Page(&HomePage);
+    shopPage = Page(&ShopPage);
 
     //-------------------------------------------------------------------------
     // Tulis halaman yang ingin ditampilkan saat program pertama kali 

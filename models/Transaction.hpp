@@ -5,24 +5,23 @@
 
 
 struct Transaction {
-    Item item;          /** Item yang dibeli. */
+    Item *itemPointer;  /** Item yang dibeli. */
     int quantity;       /** Jumlah item yang dibeli. */
 
     /**
      * Konstruktor Transaction.
      * 
-     * @param item Item yang dibeli.
+     * @param itemPointer Item yang dibeli.
      * @param quantity Jumlah item yang dibeli.
-     * @param price Harga total dari item yang dibeli.
      */
-    Transaction(Item item, int quantity) {
-        this->item = item;
+    Transaction(Item *itemPointer, int quantity) {
+        this->itemPointer = itemPointer;
         this->quantity = quantity;
     }
 
     // Default constructor
     Transaction() {
-        this->item = Item();
+        this->itemPointer = nullptr;
         this->quantity = 0;
     }
 
@@ -32,7 +31,12 @@ struct Transaction {
      * @return harga total dari item yang dibeli dalam bentuk `int`.
      */
     int getTotalPrice() {
-        return this->item.price * this->quantity;
+        if (itemPointer == nullptr) {
+            std::cout << "Error: Item pointer is null." << std::endl;
+            return -1;
+        }
+
+        return itemPointer->price * quantity;
     }
 
     /**

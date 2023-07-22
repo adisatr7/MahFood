@@ -7,11 +7,11 @@
 
 using global::currentUser;
 
-#ifndef HOMEPAGE_HPP
-#define HOMEPAGE_HPP
+#ifndef SHOPPAGE_HPP
+#define SHOPPAGE_HPP
 
 
-void HomePage() {
+void ShopPage() {
 
     // Daftar pilihan yang dapat dipilih user lewat menu
     for (int i=0; i<items.length(); i++) {

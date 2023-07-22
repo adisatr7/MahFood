@@ -15,7 +15,6 @@ using std::endl;
 struct Item {
     string name;        /** Nama item. */
     int price;          /** Harga dari item dalam satuan Rupiah. */
-    int stock;          /** Jumlah item yang tersedia di restoran. */
     string category;    /** Kategori item. */
 
     /**
@@ -23,13 +22,11 @@ struct Item {
      * 
      * @param name Nama item.
      * @param price Harga dari item dalam satuan Rupiah.
-     * @param stock Jumlah item yang tersedia di restoran,
      * @param category Kategori item.
      */
-    Item(string name, int price, int stock, string category) {
+    Item(string name, int price, string category) {
         this->name = name;
         this->price = price;
-        this->stock = stock;
         this->category = category;
     }
 
@@ -39,7 +36,6 @@ struct Item {
     Item() {
         this->name = "";
         this->price = 0;
-        this->stock = 0;
         this->category = "";
     }
 
@@ -51,7 +47,6 @@ struct Item {
     string toString() const {
         return "Nama: " + this->name + "\n"
              + "Harga: " + to_string(this->price) + "\n"
-             + "Jumlah Tersedia: " + to_string(this->stock) + "\n"
              + "Kategori: " + this->category + "\n";
     }
 

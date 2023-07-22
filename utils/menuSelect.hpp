@@ -24,6 +24,15 @@ int menuChoice = 0;
  */
 LinkedList<string> options = LinkedList<string>();
 
+
+/**
+ * Setel ulang pilihan menuChoice menjadi 0 dan menghapus semua opsi.
+ */
+void resetMenuChoice() {
+    menuChoice = 0;
+    options.clear();
+}
+
 /**
  * Memungkinkan user untuk memilih opsi dari daftar opsi yang diberikan
  * menggunakan tombol tanda panah di keyboard.
@@ -52,25 +61,16 @@ void menuSelect() {
 
     // Handle inputan user
     if (key == UP && menuChoice > 0) {
-        (menuChoice)--;
+        menuChoice--;
     } else if (key == DOWN && menuChoice < options.length() - 1) {
-        (menuChoice)++;
+        menuChoice++;
     } else if (key == ENTER) {
-        resetMenuChoice();
         return;
     }
 
     // Muat ulang halaman  agar menu menampilkan opsi yg sekarang dipilih
     options.clear();
     reloadPage();
-}
-
-/**
- * Setel ulang pilihan menuChoice menjadi 0 dan menghapus semua opsi.
- */
-void resetMenuChoice() {
-    menuChoice = 0;
-    options.clear();
 }
 
 #endif
