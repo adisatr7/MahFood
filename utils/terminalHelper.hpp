@@ -1,5 +1,6 @@
 #include <iostream>
 // #include <termios.h>
+#include <conio.h>
 #include <unistd.h>
 
 using std::cout;
