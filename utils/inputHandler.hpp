@@ -1,7 +1,9 @@
 #include <iostream>
 
+using std::cout;
 using std::cin;
 using std::getline;
+using std::string;
 using std::invalid_argument;
 
 #ifndef INPUTHANDLER_HPP
