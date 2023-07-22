@@ -32,7 +32,6 @@ void ShopPage() {
     // Jika user memilih menu terakhir, kembali ke menu utama
     if (menuChoice == items.length()) {
         navigate(&homePage);
-        resetMenuChoice();
         return;
     }
 
@@ -52,7 +51,7 @@ void ShopPage() {
     }
 
     // Jika user memasukan bilangan positif, masukkan pesanan ke keranjang
-    shared_ptr<Item> selectedItemPointer = make_shared<Item>(items.get(menuChoice - 1));
+    shared_ptr<Item> selectedItemPointer = make_shared<Item>(items.get(menuChoice));
     shoppingCart.push(Transaction(selectedItemPointer, qty));
 
     // Tampilkan pesan berhasil

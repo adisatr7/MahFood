@@ -37,7 +37,7 @@ void HomePage() {
             Transaction transaction = shoppingCart.get(i);
             Item item = *transaction.itemPointer;
             int qty = shoppingCart.get(i).quantity;
-            cout << i+1 << ". " << item.name << " (x" << qty << ") - Rp " << item.price << endl;
+            cout << i+1 << ". " << item.name << " (x" << qty << ") - " << transaction.getTotalPrice() << endl;
         }
         cout << endl;
     }
