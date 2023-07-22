@@ -19,8 +19,8 @@ struct Transaction {
      * @param newItemPointer Item yang dibeli.
      * @param quantity Jumlah item yang dibeli.
      */
-    Transaction(Item* newItemPointer, int quantity) {
-        this->itemPointer = make_shared<Item>(*newItemPointer);
+    Transaction(shared_ptr<Item> newItemPointer, int quantity) {
+        this->itemPointer = newItemPointer;
         this->quantity = quantity;
     }
 
