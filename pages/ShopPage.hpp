@@ -37,7 +37,7 @@ void ShopPage() {
     }
 
     // Mencegah bug dimana fase input qty akan loop terus
-    if (menuChoice == -1)
+    else if (menuChoice == -1)
         return;
     
     // Jika user memilih menu lain, tanyakan ingin pesan berapa
