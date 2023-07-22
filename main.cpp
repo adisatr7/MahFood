@@ -34,7 +34,7 @@ int main() {
     //-------------------------------------------------------------------------
     // Daftar item yang dapat user beli oleh user melalui aplikasi.
     //-------------------------------------------------------------------------
-    // --> items.push(Item("nama", harga, stok, "kategori"))
+    // --> items.push(Item("nama", harga, "kategori"))
     //-------------------------------------------------------------------------
 
     items.push(Item("Mendoan", 1000, "Gorengan"));

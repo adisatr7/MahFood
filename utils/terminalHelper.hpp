@@ -1,5 +1,5 @@
 #include <iostream>
-#include <termios.h>
+// #include <termios.h>
 #include <unistd.h>
 
 using std::cout;
@@ -11,47 +11,47 @@ using std::cout;
 /**
  * Matikan mode kanonik dan echo pada terminal.
  */
-void __disableCanonicalMode() {
-    // Buat struct untuk menyimpan pengaturan terminal lama dan baru
-    struct termios oldSettings, newSettings;
+// void __disableCanonicalMode() {
+//     // Buat struct untuk menyimpan pengaturan terminal lama dan baru
+//     struct termios oldSettings, newSettings;
     
-    // Dapatkan pengaturan terminal saat ini
-    tcgetattr(STDIN_FILENO, &oldSettings);
+//     // Dapatkan pengaturan terminal saat ini
+//     tcgetattr(STDIN_FILENO, &oldSettings);
     
-    // Salin pengaturan terminal saat ini ke pengaturan baru
-    newSettings = oldSettings;
+//     // Salin pengaturan terminal saat ini ke pengaturan baru
+//     newSettings = oldSettings;
     
-    // Nonaktifkan mode kanonik dan echo untuk pembacaan karakter tunggal untuk sementara
-    newSettings.c_lflag &= ~(ICANON | ECHO);
+//     // Nonaktifkan mode kanonik dan echo untuk pembacaan karakter tunggal untuk sementara
+//     newSettings.c_lflag &= ~(ICANON | ECHO);
     
-    // Atur pengaturan terminal baru
-    tcsetattr(STDIN_FILENO, TCSANOW, &newSettings);
+//     // Atur pengaturan terminal baru
+//     tcsetattr(STDIN_FILENO, TCSANOW, &newSettings);
 
-    // Bug fix agar tombol yang ditekan sebelumnya tidak ikut terbaca
-    newSettings.c_cc[VMIN] = 1;     // Set jumlah karakter minimum yang harus dibaca
-    newSettings.c_cc[VTIME] = 0;    // Set waktu tunggu pembacaan karakter
-}
+//     // Bug fix agar tombol yang ditekan sebelumnya tidak ikut terbaca
+//     newSettings.c_cc[VMIN] = 1;     // Set jumlah karakter minimum yang harus dibaca
+//     newSettings.c_cc[VTIME] = 0;    // Set waktu tunggu pembacaan karakter
+// }
 
 
 /**
  * Aktifkan mode kanonik dan echo pada terminal.
  */
-void __enableCanonicalMode() {
-    // Buat struct untuk menyimpan pengaturan terminal lama dan baru
-    struct termios oldSettings, newSettings;
+// void __enableCanonicalMode() {
+//     // Buat struct untuk menyimpan pengaturan terminal lama dan baru
+//     struct termios oldSettings, newSettings;
     
-    // Dapatkan pengaturan terminal saat ini
-    tcgetattr(STDIN_FILENO, &oldSettings);
+//     // Dapatkan pengaturan terminal saat ini
+//     tcgetattr(STDIN_FILENO, &oldSettings);
     
-    // Salin pengaturan terminal saat ini ke pengaturan baru
-    newSettings = oldSettings;
+//     // Salin pengaturan terminal saat ini ke pengaturan baru
+//     newSettings = oldSettings;
     
-    // Aktifkan mode kanonik dan echo untuk pembacaan karakter tunggal untuk sementara
-    newSettings.c_lflag |= (ICANON | ECHO);
+//     // Aktifkan mode kanonik dan echo untuk pembacaan karakter tunggal untuk sementara
+//     newSettings.c_lflag |= (ICANON | ECHO);
     
-    // Atur pengaturan terminal baru
-    tcsetattr(STDIN_FILENO, TCSANOW, &newSettings);
-}
+//     // Atur pengaturan terminal baru
+//     tcsetattr(STDIN_FILENO, TCSANOW, &newSettings);
+// }
 
 
 /**
@@ -75,29 +75,29 @@ void __enableCursor() {
  * 
  * @return Karakter yang dimasukkan user dalam tipe data `int`.
  */
-int getch() {
+// int getch() {
 
-    // Matikan mode kanonik dan echo pada terminal
-    __disableCanonicalMode();
+//     // Matikan mode kanonik dan echo pada terminal
+//     __disableCanonicalMode();
 
-    // Sembunyikan kursor terminal
-    __disableCursor();
+//     // Sembunyikan kursor terminal
+//     __disableCursor();
 
-    // Variable untuk menyimpan karakter yang dimasukkan user
-    int ch;
+//     // Variable untuk menyimpan karakter yang dimasukkan user
+//     int ch;
 
-    // Baca karakter dari input tanpa menunggu Enter
-    ch = getchar();
+//     // Baca karakter dari input tanpa menunggu Enter
+//     ch = getchar();
 
-    // Tampilkan kursor terminal
-    __enableCursor();
+//     // Tampilkan kursor terminal
+//     __enableCursor();
     
-    // Kembalikan pengaturan terminal ke semula
-    __enableCanonicalMode();
+//     // Kembalikan pengaturan terminal ke semula
+//     __enableCanonicalMode();
     
-    // Kembalikan karakter yang dibaca
-    return ch;
-}
+//     // Kembalikan karakter yang dibaca
+//     return ch;
+// }
 
 
 /**
