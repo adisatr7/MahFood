@@ -40,6 +40,7 @@ Page loginPage;
 Page registerPage;
 Page homePage;
 Page shopPage;
+Page checkoutPage;
 
 //-----------------------------------------------------------------------------
 
