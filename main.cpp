@@ -21,6 +21,7 @@
 #include "./pages/RegisterPage.hpp" // Halaman register
 #include "./pages/HomePage.hpp"     // Halaman home
 #include "./pages/ShopPage.hpp"     // Halaman shop
+#include "./pages/CheckoutPage.hpp" // Halaman checkout
 
 
 //-----------------------------------------------------------------------------
@@ -63,6 +64,7 @@ int main() {
     registerPage = Page(&RegisterPage);
     homePage = Page(&HomePage);
     shopPage = Page(&ShopPage);
+    checkoutPage = Page(&CheckoutPage);
 
     //-------------------------------------------------------------------------
     // Tulis halaman yang ingin ditampilkan saat program pertama kali 
