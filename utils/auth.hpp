@@ -18,7 +18,7 @@ using global::currentUser;
 bool isUserIdExist(string id) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
-    Node<User>* current = registeredUsers.head;
+    Node<User>* current = registeredUsers.head.get();
 
     // Cari user yang sesuai dengan id.
     while (current != nullptr) {
@@ -26,7 +26,7 @@ bool isUserIdExist(string id) {
             return true;
 
         // Jika data yang ditunjuk oleh pointer bukan yang dicari, maju ke data berikutnya.
-        current = current->next;
+        current = current->next.get();
     }
 
     // Jika tidak ditemukan, kembalikan `false`.
@@ -45,7 +45,7 @@ bool isUserIdExist(string id) {
 bool isUserExist(string id, string password) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
-    Node<User>* current = registeredUsers.head;
+    Node<User>* current = registeredUsers.head.get();
 
     // Cari user yang sesuai dengan id dan password.
     while (current != nullptr) {
@@ -53,7 +53,7 @@ bool isUserExist(string id, string password) {
             return true;
 
         // Jika data yang ditunjuk oleh pointer bukan yang dicari, maju ke data berikutnya.
-        current = current->next;
+        current = current->next.get();
     }
 
     // Jika tidak ditemukan, kembalikan `false`.
@@ -72,7 +72,7 @@ bool isUserExist(string id, string password) {
 bool login(string id, string password) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
-    Node<User>* current = registeredUsers.head;
+    Node<User>* current = registeredUsers.head.get();
 
     // Cari user yang sesuai dengan id dan password.
     while (current != nullptr) {
@@ -82,7 +82,7 @@ bool login(string id, string password) {
         }
 
         // Jika data yang ditunjuk oleh pointer bukan yang dicari, maju ke data berikutnya.
-        current = current->next;
+        current = current->next.get();
     }
     return false;
 }
@@ -100,7 +100,7 @@ bool login(string id, string password) {
 bool registerUser(string id, string name, string password) {
 
     // Buat pointer baru yang menunjuk ke head dari Linked List.
-    Node<User>* current = registeredUsers.head;
+    Node<User>* current = registeredUsers.head.get();
 
     // Cari apakah id sudah pernah didaftarkan sebelumnya.
     if (isUserExist(id, password)) {

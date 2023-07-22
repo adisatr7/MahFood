@@ -1,21 +1,26 @@
+#include <memory>
 #include "Item.hpp"
+
+using std::shared_ptr;
+using std::make_shared;
+using std::move;
 
 #ifndef TRANSACTION_HPP
 #define TRANSACTION_HPP
 
 
 struct Transaction {
-    Item *itemPointer;  /** Item yang dibeli. */
-    int quantity;       /** Jumlah item yang dibeli. */
+    shared_ptr<Item> itemPointer;   /** Pointer menuju item yang dibeli. */
+    int quantity;                   /** Jumlah item yang dibeli. */
 
     /**
      * Konstruktor Transaction.
      * 
-     * @param itemPointer Item yang dibeli.
+     * @param newItemPointer Item yang dibeli.
      * @param quantity Jumlah item yang dibeli.
      */
-    Transaction(Item *itemPointer, int quantity) {
-        this->itemPointer = itemPointer;
+    Transaction(Item* newItemPointer, int quantity) {
+        this->itemPointer = make_shared<Item>(*newItemPointer);
         this->quantity = quantity;
     }
 
@@ -32,7 +37,7 @@ struct Transaction {
      */
     int getTotalPrice() {
         if (itemPointer == nullptr) {
-            std::cout << "Error: Item pointer is null." << std::endl;
+            std::cout << "Error: Item pointer bernilai null!" << std::endl;
             return -1;
         }
 
