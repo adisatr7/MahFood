@@ -43,6 +43,7 @@ void HomePage() {
     switch (menuChoice) {
         case 0:
             navigate(&shopPage);
+            resetMenuChoice();
             break;
         case 1:
             // navigate(&orderPage);
