@@ -39,7 +39,7 @@ int main() {
     items.push(Item("Mendoan", 1000, "Gorengan"));
     items.push(Item("Tahu", 1000, "Gorengan"));
     items.push(Item("Es Teh", 3000, "Minuman"));
-    items.push(Item("Es Jeruk", 4000, "Minuman"));
+    items.push(Item("Kopi", 4000, "Minuman"));
 
     //-------------------------------------------------------------------------
     // Daftar akun yang sudah terdaftar di aplikasi secara default untuk

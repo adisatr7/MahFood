@@ -14,8 +14,12 @@ using global::currentUser;
 void HomePage() {
 
     // Daftar pilihan yang dapat dipilih user lewat menu
-    options.push("Buat Pesanan");
-    options.push("Lihat Keranjang ");
+    if (currentUser.cart.length() == 0) {
+        options.push("Buat Pesanan Baru");
+    } else {
+        options.push("Tambahkan Barang ke Keranjang");
+    }
+    options.push("Checkout");
     options.push("Keluar");
 
     cout << "================================" << endl;
@@ -43,7 +47,7 @@ void HomePage() {
     switch (menuChoice) {
         case 0:
             navigate(&shopPage);
-            resetMenuChoice();
+            // resetMenuChoice();
             break;
         case 1:
             // navigate(&orderPage);
