@@ -107,11 +107,11 @@ void __enableCursor() {
  * switch case tidak dapat digunakan dengan tipe data string.
  */
 enum MenuKey {
-    UP,
-    DOWN,
-    RIGHT,
-    LEFT,
-    ENTER,
+    UP = 256 + 72,
+    DOWN = 256 + 80,
+    RIGHT = 256 + 77,
+    LEFT = 256 + 75,
+    ENTER = 256 + 13,
     INVALID
 };
 
@@ -128,26 +128,10 @@ MenuKey getMenuKeyPress() {
     ch = getch();
 
     // Kembalikan karakter yang dibaca
-    if (ch == 27) {
-        getch(); 
-        ch = getch();
-        switch (ch) {
-            case 72: // Up arrow
-                return MenuKey::UP;
-            case 80: // Down arrow
-                return MenuKey::DOWN;
-            case 77: // Right arrow
-                return MenuKey::RIGHT;
-            case 75: // Left arrow
-                return MenuKey::LEFT;
-            default: // Invalid arrow key
-                return MenuKey::INVALID;
-        }
-    } else if (ch == 13) {
-        return MenuKey::ENTER; // Enter key
-    } else {
-        return MenuKey::INVALID; // Any other key is considered invalid
-    }
+    if ( ch == 0 || ch == 224 )
+        ch = 256 + getch();
+
+    return static_cast<MenuKey>(ch);
 }
 
 
