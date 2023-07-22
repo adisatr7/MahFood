@@ -9,13 +9,12 @@
  * Akun yang akan digunakan untuk login ke aplikasi.
  */ 
 struct User {
-    string id;                      /** ID yang digunakan untuk login. */
-    string name;                    /** Nama lengkap user. */
-    string password;                /** Password yang digunakan untuk login. */
-    LinkedList<Transaction> cart;   /** Keranjang belanja user. */
+    string id;          /** ID yang digunakan untuk login. */
+    string name;        /** Nama lengkap user. */
+    string password;    /** Password yang digunakan untuk login. */
 
     /**
-     * Konstruktor Account.
+     * Konstruktor objek User.
      * 
      * @param id ID yang digunakan untuk login.
      * @param name Nama lengkap user.
@@ -27,7 +26,9 @@ struct User {
         this->password = password;
     }
 
-    // Default constructor
+    /**
+     * Konstruktor default
+     */
     User() {
         this->id = "";
         this->name = "";

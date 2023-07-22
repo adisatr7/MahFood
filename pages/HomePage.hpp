@@ -1,5 +1,6 @@
 #include "../config.hpp"
 #include "../data/items.hpp"
+#include "../data/shoppingCart.hpp"
 #include "../global/states.hpp"
 #include "../utils/router.hpp"
 #include "../utils/inputHandler.hpp"
@@ -14,7 +15,7 @@ using global::currentUser;
 void HomePage() {
 
     // Daftar pilihan yang dapat dipilih user lewat menu
-    if (currentUser.cart.length() == 0) {
+    if (shoppingCart.length() == 0) {
         options.push("Buat Pesanan Baru");
     } else {
         options.push("Tambahkan Barang ke Keranjang");
@@ -30,12 +31,12 @@ void HomePage() {
     cout << endl;
     
     // Menampilkan daftar belanjaan user (jika ada)
-    if (currentUser.cart.length() > 0) {
-        cout << "Kamu memiliki " << currentUser.cart.length() << " item di keranjangmu:" << endl;
-        for (int i = 0; i < currentUser.cart.length(); i++) {
-            Transaction transaction = currentUser.cart.get(i);
+    if (shoppingCart.length() > 0) {
+        cout << "Kamu memiliki " << shoppingCart.length() << " item di keranjangmu:" << endl;
+        for (int i = 0; i < shoppingCart.length(); i++) {
+            Transaction transaction = shoppingCart.get(i);
             Item item = *transaction.itemPointer;
-            int qty = currentUser.cart.get(i).quantity;
+            int qty = shoppingCart.get(i).quantity;
             cout << i+1 << ". " << item.name << " (x" << qty << ") - Rp " << item.price << endl;
         }
         cout << endl;

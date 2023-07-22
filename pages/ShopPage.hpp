@@ -47,7 +47,7 @@ void ShopPage() {
 
     // Jika user memasukan bilangan positif, masukkan pesanan ke keranjang
     Item selectedItem = items.get(menuChoice - 1);
-    currentUser.cart.push(Transaction(&selectedItem, qty));
+    shoppingCart.push(Transaction(&selectedItem, qty));
 
     // Tampilkan pesan berhasil
     cout << "Pesanan berhasil ditambahkan!" << endl;
