@@ -132,18 +132,18 @@ MenuKey getMenuKeyPress() {
         getch(); 
         ch = getch();
         switch (ch) {
-            case 65: // Up arrow
+            case 72: // Up arrow
                 return MenuKey::UP;
-            case 66: // Down arrow
+            case 80: // Down arrow
                 return MenuKey::DOWN;
-            case 67: // Right arrow
+            case 77: // Right arrow
                 return MenuKey::RIGHT;
-            case 68: // Left arrow
+            case 75: // Left arrow
                 return MenuKey::LEFT;
             default: // Invalid arrow key
                 return MenuKey::INVALID;
         }
-    } else if (ch == 10) {
+    } else if (ch == 13) {
         return MenuKey::ENTER; // Enter key
     } else {
         return MenuKey::INVALID; // Any other key is considered invalid
